@@ -586,6 +586,52 @@ body.is-result .foot{ display:none; }
   color:var(--tinta-tenue);
 }
 
+/* ---------- Escritorio: cada pantalla entra sin scroll ----------
+   En pantallas anchas hay ratón y ventana fija, así que el test se encuadra
+   dentro del alto disponible en lugar de crecer hacia abajo. Todas las
+   medidas escalan con svh, igual que ya hacía la pantalla final.          */
+@media (min-width:900px){
+  .wrap{
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding-top:clamp(16px, 3svh, 56px);
+    padding-bottom:clamp(16px, 3svh, 56px);
+  }
+
+  .card{ padding:clamp(20px, 3.4svh, 48px) var(--gutter); }
+  .eyebrow{ margin-bottom:clamp(12px, 2.4svh, 30px); }
+  .foot{ margin-top:clamp(14px, 2.6svh, 46px); }
+
+  /* Portada */
+  .intro .card{ padding:clamp(24px, 4.4svh, 60px) var(--gutter); }
+  h1{ font-size:clamp(1.9rem, 6.2svh, 3.35rem); }
+  .lead{
+    margin-top:clamp(12px, 2.4svh, 24px);
+    font-size:clamp(.95rem, 2.1svh, 1.13rem);
+  }
+  .rule{ margin:clamp(16px, 3.4svh, 40px) 0 clamp(12px, 2.4svh, 24px); }
+
+  /* Preguntas */
+  .progress{ margin-bottom:clamp(14px, 2.6svh, 32px); }
+  .q__title{ font-size:clamp(1.3rem, 3.6svh, 2rem); }
+  .q__hint{
+    margin-top:clamp(8px, 1.6svh, 12px);
+    font-size:clamp(.86rem, 1.9svh, .95rem);
+  }
+  .options{
+    margin-top:clamp(14px, 2.6svh, 30px);
+    gap:clamp(7px, 1.3svh, 10px);
+  }
+  .option{
+    min-height:clamp(48px, 8svh, 60px);
+    padding-top:clamp(8px, 1.4svh, 14px);
+    padding-bottom:clamp(8px, 1.4svh, 14px);
+  }
+  .q__foot{ margin-top:clamp(14px, 2.6svh, 30px); }
+}
+
 /* ---------- Accesibilidad ---------- */
 :focus-visible{
   outline:2px solid var(--salvia);

@@ -61,10 +61,20 @@ caché durante días. Para forzar el refresco, pasa la URL por el
 - La página no carga nada de fuera ni instala cookies, así que no necesita
   banner de consentimiento.
 
+### Sin scroll
+
+**En escritorio (a partir de 900 px de ancho) ninguna pantalla hace scroll.**
+Portada, preguntas y resultado se encuadran dentro del alto de la ventana, y
+todas las medidas — titulares, opciones, márgenes — escalan con `svh`, así que
+se ajustan solas. Comprobado de 1280×620 a 1920×1080.
+
+En móvil hacen scroll, como es natural, las preguntas más largas; la que nunca
+lo hace es la última.
+
 ### La pantalla final
 
-Está pensada para entrar entera en el viewport, sin scroll y con el botón de
-WhatsApp siempre a la vista. Para conseguirlo se adapta al espacio disponible:
+Entra entera en el viewport en cualquier tamaño, con el botón de WhatsApp
+siempre a la vista. Para conseguirlo se adapta al espacio disponible:
 
 - **A partir de 900 px de ancho** el diagnóstico y el bloque de comunidad van en
   dos columnas, así que la altura es la del más alto y caben también las tres
@@ -72,9 +82,7 @@ WhatsApp siempre a la vista. Para conseguirlo se adapta al espacio disponible:
 - **En móvil**, apilados, no hay sitio para las tres señales además del acceso a
   la comunidad, así que se ocultan: mandan la puntuación, el perfil y el botón.
 
-Las medidas de esa pantalla (aro, titulares, márgenes, botón) escalan con
-`svh`, de modo que se ajustan solas a cada alto de pantalla. Comprobado sin
-scroll de 360×640 a 1440×900.
+Comprobado sin scroll de 360×640 a 1440×900.
 
 ### Diseño
 

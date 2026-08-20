@@ -15,8 +15,8 @@ publicar en Netlify / Vercel / GitHub Pages o incrustar en un `<iframe>`.
    al responder. Se puede volver atrás y las respuestas se guardan en el
    navegador, así que si alguien cierra a mitad, retoma donde lo dejó.
 3. **Cálculo** — dos segundos de espera antes del resultado.
-4. **Resultado + comunidad** — puntuación sobre 24, perfil y acceso al grupo,
-   todo en la misma pantalla.
+4. **Resultado + comunidad** — bienestar del sueño sobre 10, perfil y acceso al
+   grupo, todo en la misma pantalla.
 
 ## Publicarlo y compartirlo por enlace
 
@@ -113,6 +113,17 @@ Todo lo editable está al principio del `<script>`, al final del archivo:
   se recalcula solo; revisa entonces los cortes de `PROFILES`.
 - **Resultados** → el array `PROFILES`, ordenado por el `max` de puntos de cada
   perfil: 0–7, 8–15 y 16–24.
+
+### Las dos escalas
+
+Por dentro se suman **señales**: de 0 a 24, donde más es peor. Lo que se enseña
+es lo contrario, el **bienestar del sueño de 0 a 10**, donde 10 es un descanso
+excelente. La conversión está en la función `bienestar()`:
+
+    nota = 10 - redondeo(señales / 24 × 10)
+
+El aro se rellena en proporción a la nota, así que un aro lleno es buena señal.
+Los tres perfiles siguen calculándose con los puntos crudos.
 
 ### Accesibilidad
 

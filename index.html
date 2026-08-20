@@ -735,8 +735,8 @@ body.is-result .foot{ display:none; }
       <div class="result__head">
         <div class="gauge" id="gauge" role="img" aria-labelledby="gauge-a11y">
           <span class="gauge__inner">
-            <span class="gauge__num"><b id="score-num">0</b><small>/24</small></span>
-            <span class="gauge__label">Señales</span>
+            <span class="gauge__num"><b id="score-num">0</b><small>/10</small></span>
+            <span class="gauge__label">Bienestar</span>
           </span>
         </div>
         <p class="sr-only" id="gauge-a11y"></p>
@@ -753,8 +753,7 @@ body.is-result .foot{ display:none; }
     <div class="cta">
       <h2>Únete a la <em>comunidad</em></h2>
       <p id="cta-text">
-        Dentro están las 12 señales al completo y las prácticas de
-        respiración que trabajo en consulta.
+        Dentro compartimos recursos gratuitos y guías para mejorar el sueño.
       </p>
 
       <a class="btn btn--whatsapp"
@@ -881,18 +880,18 @@ body.is-result .foot{ display:none; }
   var PROFILES = [
     {
       max: 7,
-      badge: "Nivel 1 de 3",
+      badge: "Descanso sólido",
       title: "Tu noche <em>respira bien</em>",
       text: "Respiras sobre todo por la nariz y el cuerpo consigue bajar de revoluciones al acostarse. Las pocas señales marcadas son las que conviene vigilar.",
       signals: [
         "Respirar por la nariz de día es lo que mantiene la nariz abierta de noche.",
         "En semanas de estrés, tres minutos de exhalación lenta antes de dormir sostienen el terreno.",
-        "Reconocer las señales pronto es lo que evita llegar al nivel 3."
+        "Reconocer las señales pronto es lo que evita que el problema se instale."
       ]
     },
     {
       max: 15,
-      badge: "Nivel 2 de 3",
+      badge: "Descanso en riesgo",
       title: "Tu descanso <em>se está escapando</em>",
       text: "Aparecen ya varias señales del patrón que veo cada semana en consulta: la respiración se va a la boca por la noche y el sistema nervioso no llega a soltar. El estrés es la consecuencia, no la causa.",
       signals: [
@@ -903,7 +902,7 @@ body.is-result .foot{ display:none; }
     },
     {
       max: 24,
-      badge: "Nivel 3 de 3",
+      badge: "Descanso comprometido",
       title: "Tu cuerpo lleva tiempo <em>pidiendo aire</em>",
       text: "El descanso no falla por falta de horas, sino por cómo respiras mientras duermes: el cuerpo pasa la noche en alerta y el cansancio ya no se va con café. Merece la pena empezar hoy.",
       signals: [
@@ -1050,9 +1049,15 @@ body.is-result .foot{ display:none; }
     return PROFILES[PROFILES.length - 1];
   }
 
+  // De señales acumuladas a bienestar del sueño: 0 el peor descanso, 10 el mejor.
+  function bienestar(puntos) {
+    var max = QUESTIONS.length * 3;
+    return 10 - Math.round((puntos / max) * 10);
+  }
+
   function renderResult() {
     var s = score();
-    var max = QUESTIONS.length * 3;
+    var nota = bienestar(s);
     var p = profileFor(s);
 
     $("result-badge").textContent = p.badge;
@@ -1068,18 +1073,18 @@ body.is-result .foot{ display:none; }
     });
 
     $("gauge-a11y").textContent =
-      s + " señales de " + max + ". " + p.badge + ".";
+      "Bienestar del sueño: " + nota + " sobre 10. " + p.badge + ".";
 
     // Animación del medidor
     var gauge = $("gauge");
-    var target = Math.round((s / max) * 100);
+    var target = nota * 10;
     $("score-num").textContent = "0";
     gauge.style.setProperty("--p", "0");
 
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (reduce) {
       gauge.style.setProperty("--p", String(target));
-      $("score-num").textContent = String(s);
+      $("score-num").textContent = String(nota);
       return;
     }
 
@@ -1090,7 +1095,7 @@ body.is-result .foot{ display:none; }
       var k = Math.min((ts - t0) / DUR, 1);
       var e = 1 - Math.pow(1 - k, 3);           // easeOutCubic
       gauge.style.setProperty("--p", (target * e).toFixed(2));
-      $("score-num").textContent = String(Math.round(s * e));
+      $("score-num").textContent = String(Math.round(nota * e));
       if (k < 1) window.requestAnimationFrame(step);
     }
     window.requestAnimationFrame(step);

@@ -122,8 +122,18 @@ excelente. La conversión está en la función `bienestar()`:
 
     nota = 10 - redondeo(señales / 24 × 10)
 
-El aro se rellena en proporción a la nota, así que un aro lleno es buena señal.
-Los tres perfiles siguen calculándose con los puntos crudos.
+El aro se rellena en proporción a la nota, así que un aro lleno es buena señal,
+y cambia de color como un semáforo:
+
+| Nota | Aro | Token |
+|---|---|---|
+| menos de 5 | rojo apagado | `--alerta` |
+| de 5 a 7 | ámbar | `--aviso` |
+| más de 7 | verde salvia | `--salvia` |
+
+Los dos primeros no venían en la paleta de marca; se eligieron apagados y en la
+misma familia cálida para que no desentonen. Los tres perfiles siguen
+calculándose con los puntos crudos.
 
 ### Accesibilidad
 

@@ -65,6 +65,10 @@
   /* Acento de la muestra tipográfica (la palabra en cursiva) */
   --rosa:        #9c5f6b;
 
+  /* Semáforo del aro de resultado (el verde es la propia salvia) */
+  --alerta:      #b1554f;   /* nota por debajo de 5 */
+  --aviso:       #c08a3e;   /* nota de 5 a 7        */
+
   /* --- Tipografía --- */
   --serif: "Playfair Display", "Iowan Old Style", Georgia, "Times New Roman", serif;
   --sans:  "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -433,11 +437,16 @@ body.is-result .foot{ display:none; }
   margin:0 auto clamp(10px, 1.8svh, 24px);
   border-radius:50%;
   background:
-    conic-gradient(var(--salvia) calc(var(--p) * 1%), var(--linea) 0);
+    conic-gradient(var(--aro, var(--salvia)) calc(var(--p) * 1%), var(--linea) 0);
   display:grid;
   place-items:center;
   transition:none;
 }
+/* Menos de 5, rojo; de 5 a 7, ámbar; más de 7, verde. */
+.gauge.es-baja  { --aro:var(--alerta); }
+.gauge.es-media { --aro:var(--aviso);  }
+.gauge.es-alta  { --aro:var(--salvia); }
+
 .gauge::after{
   content:"";
   position:absolute;
@@ -1078,6 +1087,9 @@ body.is-result .foot{ display:none; }
     // Animación del medidor
     var gauge = $("gauge");
     var target = nota * 10;
+
+    gauge.classList.remove("es-baja", "es-media", "es-alta");
+    gauge.classList.add(nota < 5 ? "es-baja" : nota <= 7 ? "es-media" : "es-alta");
     $("score-num").textContent = "0";
     gauge.style.setProperty("--p", "0");
 

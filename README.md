@@ -15,8 +15,23 @@ publicar en Netlify / Vercel / GitHub Pages o incrustar en un `<iframe>`.
    al responder. Se puede volver atrás y las respuestas se guardan en el
    navegador, así que si alguien cierra a mitad, retoma donde lo dejó.
 3. **Cálculo** — dos segundos de espera antes del resultado.
-4. **Resultado** — puntuación sobre 24, uno de los tres perfiles y sus señales.
-5. **Únete a la comunidad** — CTA final al grupo de WhatsApp.
+4. **Resultado + comunidad** — puntuación sobre 24, perfil y acceso al grupo,
+   todo en la misma pantalla.
+
+### La pantalla final
+
+Está pensada para entrar entera en el viewport, sin scroll y con el botón de
+WhatsApp siempre a la vista. Para conseguirlo se adapta al espacio disponible:
+
+- **A partir de 900 px de ancho** el diagnóstico y el bloque de comunidad van en
+  dos columnas, así que la altura es la del más alto y caben también las tres
+  señales del perfil.
+- **En móvil**, apilados, no hay sitio para las tres señales además del acceso a
+  la comunidad, así que se ocultan: mandan la puntuación, el perfil y el botón.
+
+Las medidas de esa pantalla (aro, titulares, márgenes, botón) escalan con
+`svh`, de modo que se ajustan solas a cada alto de pantalla. Comprobado sin
+scroll de 360×640 a 1440×900.
 
 ### Diseño
 
@@ -51,5 +66,6 @@ Todo lo editable está al principio del `<script>`, al final del archivo:
 ### Accesibilidad
 
 Navegable con teclado (teclas `1`–`4` para responder, flechas para moverse,
-`Retroceso` para volver), roles `radiogroup`/`radio`, avisos por `aria-live` y
-respeto de `prefers-reduced-motion`.
+`Retroceso` para volver; los atajos funcionan aunque no se anuncien en pantalla),
+roles `radiogroup`/`radio`, avisos por `aria-live` y respeto de
+`prefers-reduced-motion`.

@@ -164,35 +164,6 @@ h1 em{ font-style:italic; color:var(--rosa); }
 .intro{ text-align:center; }
 .intro .card{ padding:clamp(28px, 6.5vw, 60px) var(--gutter); }
 
-.pills{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:8px;
-  margin:clamp(22px,4vw,30px) 0 0;
-  padding:0;
-  list-style:none;
-}
-.pills li{
-  display:inline-flex;
-  align-items:center;
-  gap:7px;
-  padding:7px 14px;
-  border:1px solid var(--linea-fuerte);
-  border-radius:999px;
-  background:var(--crema);
-  font-size:.78rem;
-  font-weight:400;
-  color:var(--tinta-suave);
-}
-.pills li::before{
-  content:"";
-  width:5px; height:5px;
-  border-radius:50%;
-  background:var(--salvia);
-  flex:none;
-}
-
 /* ---------- Botones ---------- */
 .btn{
   display:inline-flex;
@@ -220,6 +191,8 @@ h1 em{ font-style:italic; color:var(--rosa); }
 .btn--primary:hover{ background:#22303f; transform:translateY(-2px); }
 .btn--whatsapp{
   width:100%;
+  min-height:clamp(46px, 7svh, 56px);
+  padding-top:0; padding-bottom:0;
   background:var(--salvia);
   color:var(--tinta);
   box-shadow:0 16px 32px -16px rgba(163,177,138,.9);
@@ -353,24 +326,15 @@ h1 em{ font-style:italic; color:var(--rosa); }
 .q__foot{
   display:flex;
   align-items:center;
-  justify-content:space-between;
   gap:14px;
   margin-top:clamp(22px, 4vw, 30px);
 }
-.q__note{
-  margin:0;
-  font-size:.74rem;
-  letter-spacing:.04em;
-  color:var(--tinta-tenue);
-}
 #screen-quiz.is-first #btn-back{ display:none; }
+#screen-quiz.is-first .q__foot{ display:none; }
 
 @media (max-width:520px){
-  .q__note{ display:none; }
-  .q__foot{ justify-content:flex-start; }
-  #screen-quiz.is-first .q__foot{ display:none; }
   /* El CTA de WhatsApp debe caber en una sola línea */
-  .btn--whatsapp{ padding:15px 18px; font-size:.79rem; letter-spacing:.1em; }
+  .btn--whatsapp{ padding-left:16px; padding-right:16px; font-size:.79rem; letter-spacing:.09em; }
 }
 
 /* ---------- Cálculo ---------- */
@@ -389,14 +353,67 @@ h1 em{ font-style:italic; color:var(--rosa); }
   50%    { opacity:1;   transform:scale(1); background:var(--salvia); }
 }
 
-/* ---------- Resultado ---------- */
+/* ---------- Resultado ----------
+   La última pantalla debe entrar entera en el viewport, con el acceso a la
+   comunidad siempre a la vista: todas las medidas escalan con svh.          */
+body.is-result .wrap{
+  min-height:100svh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  padding-top:clamp(12px, 2.2svh, 28px);
+  padding-bottom:clamp(12px, 2.2svh, 28px);
+}
+body.is-result .foot{ display:none; }
+
+#screen-result .card{
+  padding:clamp(16px, 2.8svh, 34px) var(--gutter);
+}
+
+.result__grid{
+  display:grid;
+  gap:clamp(10px, 1.8svh, 22px);
+  align-items:stretch;
+}
+
+/* Pantallas anchas: diagnóstico y comunidad, uno al lado del otro */
+@media (min-width:900px){
+  body.is-result .wrap{ max-width:1080px; }
+  .result__grid{ grid-template-columns:1.08fr .92fr; }
+  .cta{ margin-top:0; display:flex; flex-direction:column; justify-content:center; }
+}
+
+/* Una sola columna: el diagnóstico y el acceso a la comunidad van apilados y
+   no cabe además el detalle de señales, así que manda el acceso. Además se
+   frena el crecimiento de las medidas para que no se coma el alto ganado. */
+@media (max-width:899px){
+  #screen-result .signals{ display:none; }
+  #screen-result .result__text{ margin-bottom:clamp(2px, .6svh, 8px); }
+
+  .gauge{ width:clamp(80px, 12.5svh, 116px); height:clamp(80px, 12.5svh, 116px); }
+  .gauge__num{ font-size:clamp(1.45rem, 3.9svh, 1.95rem); }
+  .result__title{ font-size:clamp(1.22rem, 3.1svh, 1.72rem); }
+  .result__text{ font-size:clamp(.86rem, 1.7svh, .97rem); }
+  .cta h2{ font-size:clamp(1.16rem, 2.9svh, 1.68rem); }
+  .cta p{ font-size:clamp(.85rem, 1.7svh, .97rem); }
+  .btn--whatsapp{ min-height:clamp(46px, 6.4svh, 54px); }
+}
+
+/* Móviles bajos: cada píxel cuenta */
+@media (max-height:700px){
+  #screen-result .restart{ display:none; }
+  body.is-result .wrap{ padding-top:10px; padding-bottom:10px; }
+  .cta{ padding-top:16px; padding-bottom:16px; }
+}
+
 .result__head{ text-align:center; }
 
 .gauge{
   --p:0;
   position:relative;
-  width:154px; height:154px;
-  margin:clamp(22px,4vw,30px) auto clamp(20px,3.4vw,26px);
+  width:clamp(84px, 14svh, 148px);
+  height:clamp(84px, 14svh, 148px);
+  margin:0 auto clamp(10px, 1.8svh, 24px);
   border-radius:50%;
   background:
     conic-gradient(var(--salvia) calc(var(--p) * 1%), var(--linea) 0);
@@ -407,21 +424,21 @@ h1 em{ font-style:italic; color:var(--rosa); }
 .gauge::after{
   content:"";
   position:absolute;
-  inset:9px;
+  inset:clamp(6px, .95svh, 9px);
   border-radius:50%;
   background:var(--blanco);
 }
 .gauge__inner{ position:relative; z-index:1; text-align:center; line-height:1; }
 .gauge__num{
   font-family:var(--serif);
-  font-size:2.6rem;
+  font-size:clamp(1.5rem, 4.4svh, 2.5rem);
   color:var(--tinta);
 }
-.gauge__num small{ font-size:1.05rem; color:var(--tinta-tenue); }
+.gauge__num small{ font-size:.42em; color:var(--tinta-tenue); }
 .gauge__label{
   display:block;
-  margin-top:7px;
-  font-size:.6rem;
+  margin-top:clamp(3px, .7svh, 7px);
+  font-size:.58rem;
   font-weight:700;
   letter-spacing:.2em;
   text-transform:uppercase;
@@ -430,7 +447,7 @@ h1 em{ font-style:italic; color:var(--rosa); }
 
 .result__badge{
   display:inline-block;
-  padding:6px 16px;
+  padding:clamp(3px, .55svh, 6px) 16px;
   border-radius:999px;
   background:var(--crema);
   border:1px solid var(--linea-fuerte);
@@ -441,24 +458,24 @@ h1 em{ font-style:italic; color:var(--rosa); }
   color:var(--tinta-suave);
 }
 .result__title{
-  margin:16px 0 0;
-  font-size:clamp(1.65rem, 4.6vw, 2.4rem);
-  line-height:1.18;
+  margin:clamp(9px, 1.5svh, 16px) 0 0;
+  font-size:clamp(1.24rem, 3.5svh, 2.3rem);
+  line-height:1.16;
   text-wrap:balance;
 }
 .result__title em{ font-style:italic; color:var(--rosa); }
 .result__text{
-  margin:16px auto 0;
+  margin:clamp(9px, 1.5svh, 16px) auto 0;
   max-width:52ch;
   font-weight:300;
-  font-size:1.02rem;
-  line-height:1.75;
+  font-size:clamp(.86rem, 1.85svh, 1.02rem);
+  line-height:1.62;
   color:var(--tinta-suave);
   text-wrap:pretty;
 }
 
 .signals{
-  margin:clamp(26px,5vw,36px) 0 0;
+  margin:clamp(13px, 2.4svh, 32px) 0 0;
   padding:0;
   list-style:none;
   display:grid;
@@ -467,10 +484,10 @@ h1 em{ font-style:italic; color:var(--rosa); }
 }
 .signals li{
   position:relative;
-  padding:16px 2px 16px 22px;
+  padding:clamp(7px, 1.35svh, 15px) 2px clamp(7px, 1.35svh, 15px) 22px;
   border-bottom:1px solid var(--linea);
-  font-size:.97rem;
-  line-height:1.6;
+  font-size:clamp(.83rem, 1.7svh, .97rem);
+  line-height:1.55;
   color:var(--tinta-suave);
   text-align:left;
 }
@@ -482,7 +499,7 @@ h1 em{ font-style:italic; color:var(--rosa); }
   content:"";
   position:absolute;
   left:0;
-  top:calc(16px + .62em);
+  top:calc(clamp(7px, 1.35svh, 15px) + .55em);
   width:7px; height:7px;
   border-radius:50%;
   background:var(--salvia);
@@ -490,8 +507,8 @@ h1 em{ font-style:italic; color:var(--rosa); }
 
 /* ---------- CTA WhatsApp ---------- */
 .cta{
-  margin-top:clamp(20px, 4vw, 28px);
-  padding:clamp(26px, 5.5vw, 42px) var(--gutter);
+  margin-top:clamp(10px, 1.8svh, 24px);
+  padding:clamp(18px, 3.2svh, 40px) var(--gutter);
   background:var(--tinta);
   border-radius:var(--radio);
   box-shadow:var(--sombra-alta);
@@ -503,22 +520,22 @@ h1 em{ font-style:italic; color:var(--rosa); }
 .cta .eyebrow::after{ background:linear-gradient(90deg, transparent, rgba(248,248,243,.30), transparent); }
 .cta h2{
   color:var(--blanco);
-  font-size:clamp(1.5rem, 4.2vw, 2.15rem);
-  line-height:1.2;
+  font-size:clamp(1.18rem, 3.2svh, 2.1rem);
+  line-height:1.18;
   text-wrap:balance;
 }
 .cta h2 em{ font-style:italic; color:var(--arena); }
 .cta p{
-  margin:14px auto clamp(24px,4.4vw,30px);
+  margin:clamp(8px, 1.4svh, 14px) auto clamp(13px, 2.2svh, 28px);
   max-width:44ch;
   font-weight:300;
-  font-size:1rem;
-  line-height:1.72;
+  font-size:clamp(.85rem, 1.8svh, 1rem);
+  line-height:1.6;
   color:rgba(248,248,243,.78);
   text-wrap:pretty;
 }
 .cta__fine{
-  margin:16px auto 0;
+  margin:clamp(9px, 1.5svh, 16px) auto 0;
   max-width:34ch;
   font-size:.72rem;
   letter-spacing:.05em;
@@ -527,7 +544,7 @@ h1 em{ font-style:italic; color:var(--rosa); }
 
 .restart{
   display:block;
-  margin:clamp(24px,4.5vw,32px) auto 0;
+  margin:clamp(11px, 1.9svh, 30px) auto 0;
   background:none;
   border:0;
   padding:6px;
@@ -601,12 +618,6 @@ h1 em{ font-style:italic; color:var(--rosa); }
         con lo que descubras.
       </p>
 
-      <ul class="pills">
-        <li>8 preguntas</li>
-        <li>Sin email</li>
-        <li>Resultado al instante</li>
-      </ul>
-
       <hr class="rule">
       <p class="meta">Test + mini guía · 3 minutos</p>
 
@@ -639,7 +650,6 @@ h1 em{ font-style:italic; color:var(--rosa); }
 
       <div class="q__foot">
         <button class="btn btn--ghost" type="button" id="btn-back">← Anterior</button>
-        <p class="q__note">Usa las teclas <b>1–4</b> para responder</p>
       </div>
     </div>
 
@@ -657,10 +667,9 @@ h1 em{ font-style:italic; color:var(--rosa); }
 
   <!-- ══════════════════ RESULTADO + CTA ══════════════════ -->
   <section class="screen" id="screen-result" aria-labelledby="result-title">
+    <div class="result__grid">
     <div class="card">
       <div class="result__head">
-        <p class="eyebrow"><span>Tu resultado</span></p>
-
         <div class="gauge" id="gauge" role="img" aria-labelledby="gauge-a11y">
           <span class="gauge__inner">
             <span class="gauge__num"><b id="score-num">0</b><small>/24</small></span>
@@ -679,11 +688,10 @@ h1 em{ font-style:italic; color:var(--rosa); }
 
     <!-- CTA final: comunidad de WhatsApp -->
     <div class="cta">
-      <p class="eyebrow"><span>Siguiente paso</span></p>
       <h2>Únete a la <em>comunidad</em></h2>
       <p id="cta-text">
-        Dentro comparto las prácticas de respiración que trabajo en consulta,
-        las 12 señales al completo y respondo a tus dudas. Gratis y sin ruido.
+        Dentro están las 12 señales al completo y las prácticas de
+        respiración que trabajo en consulta.
       </p>
 
       <a class="btn btn--whatsapp"
@@ -697,6 +705,7 @@ h1 em{ font-style:italic; color:var(--rosa); }
       </a>
 
       <p class="cta__fine">Grupo gratuito de WhatsApp · Puedes salir cuando quieras</p>
+    </div>
     </div>
 
     <button class="restart" type="button" id="btn-restart">Repetir el test</button>
@@ -720,10 +729,10 @@ h1 em{ font-style:italic; color:var(--rosa); }
       title: "¿Cómo te levantas por la mañana?",
       hint: "Piensa en un día cualquiera entre semana, no en el mejor ni en el peor.",
       options: [
-        { t: "Descansada, con la mente clara desde el primer minuto", v: 0 },
-        { t: "Me cuesta arrancar, pero en media hora estoy bien",     v: 1 },
-        { t: "Cansada casi siempre, aunque haya dormido suficiente",  v: 2 },
-        { t: "Agotada, como si no hubiera dormido nada",              v: 3 }
+        { t: "Con energía y la mente clara desde el primer minuto",     v: 0 },
+        { t: "Me cuesta arrancar, pero en media hora estoy bien",       v: 1 },
+        { t: "Con cansancio casi siempre, aunque haya dormido bastante", v: 2 },
+        { t: "Sin fuerzas, como si no hubiera dormido nada",            v: 3 }
       ]
     },
     {
@@ -732,7 +741,7 @@ h1 em{ font-style:italic; color:var(--rosa); }
       hint: "Es una de las huellas más claras de haber respirado por la boca toda la noche.",
       options: [
         { t: "Nunca o casi nunca",              v: 0 },
-        { t: "Alguna vez al mes",               v: 1 },
+        { t: "Alguna vez",                      v: 1 },
         { t: "Varias veces por semana",         v: 2 },
         { t: "Prácticamente cada mañana",       v: 3 }
       ]
@@ -743,7 +752,7 @@ h1 em{ font-style:italic; color:var(--rosa); }
       hint: "Ese despertar entre las 3 y las 5 en el que la cabeza se enciende de golpe.",
       options: [
         { t: "No, duermo del tirón",                            v: 0 },
-        { t: "Me muevo, pero vuelvo a dormirme enseguida",       v: 1 },
+        { t: "Me despierto, pero vuelvo a dormirme enseguida",   v: 1 },
         { t: "Sí, y tardo un rato largo en volver a dormirme",   v: 2 },
         { t: "Sí, casi cada noche, y ya no me duermo igual",     v: 3 }
       ]
@@ -751,7 +760,7 @@ h1 em{ font-style:italic; color:var(--rosa); }
     {
       kicker: "Tu respiración de día",
       title: "Ahora mismo, sin cambiar nada: ¿por dónde respiras?",
-      hint: "Como respiras despierta es como respiras dormida. Responde sin corregirte.",
+      hint: "Como respiras de día es como respiras de noche. Responde sin corregir nada.",
       options: [
         { t: "Por la nariz, sin pensarlo",                      v: 0 },
         { t: "Por la nariz, aunque a ratos abro la boca",        v: 1 },
@@ -762,9 +771,9 @@ h1 em{ font-style:italic; color:var(--rosa); }
     {
       kicker: "Al acostarte",
       title: "¿Notas la nariz congestionada cuando te tumbas?",
-      hint: "Una nariz que se cierra al horizontal cambia toda la noche que viene después.",
+      hint: "Una nariz que se cierra en horizontal cambia toda la noche que viene después.",
       options: [
-        { t: "No, respiro igual de bien tumbada",       v: 0 },
+        { t: "No, respiro igual de bien al tumbarme",   v: 0 },
         { t: "Solo con alergia o resfriado",            v: 1 },
         { t: "A menudo se me tapa un lado",             v: 2 },
         { t: "Casi siempre; acabo abriendo la boca",    v: 3 }
@@ -783,13 +792,13 @@ h1 em{ font-style:italic; color:var(--rosa); }
     },
     {
       kicker: "El bajón",
-      title: "¿Cómo llevas la tarde, entre las 4 y las 7?",
-      hint: "El cuerpo pasa factura a esa hora cuando la noche no ha reparado nada.",
+      title: "¿Cómo llevas la energía por la tarde?",
+      hint: "El cuerpo pasa factura por la tarde cuando la noche no ha reparado nada.",
       options: [
-        { t: "Con energía estable hasta la noche",          v: 0 },
+        { t: "Estable hasta la noche, sin bajones",         v: 0 },
         { t: "Bajo un poco, pero lo llevo bien",            v: 1 },
         { t: "Me cuesta concentrarme y tiro de café",        v: 2 },
-        { t: "Me caigo de sueño; a veces necesito tumbarme", v: 3 }
+        { t: "Me caigo de sueño; a veces necesito tumbarme un rato", v: 3 }
       ]
     },
     {
@@ -797,7 +806,7 @@ h1 em{ font-style:italic; color:var(--rosa); }
       title: "Cuando apagas la luz, ¿tu cabeza se apaga contigo?",
       hint: "No es cuánto tardas en dormirte, es en qué estado llegas a la cama.",
       options: [
-        { t: "Sí, me duermo tranquila en pocos minutos",        v: 0 },
+        { t: "Sí, me duermo con calma en pocos minutos",        v: 0 },
         { t: "Tardo un poco, pero sin agobio",                  v: 1 },
         { t: "Doy vueltas a las cosas y noto el pecho acelerado", v: 2 },
         { t: "Llego a la cama en alerta; dormirme es una lucha",  v: 3 }
@@ -811,33 +820,33 @@ h1 em{ font-style:italic; color:var(--rosa); }
       max: 7,
       badge: "Nivel 1 de 3",
       title: "Tu noche <em>respira bien</em>",
-      text: "Tu descanso tiene buena base: respiras sobre todo por la nariz y tu cuerpo consigue bajar de revoluciones al acostarse. Las pocas señales que has marcado son las que conviene vigilar para que no se instalen.",
+      text: "Respiras sobre todo por la nariz y el cuerpo consigue bajar de revoluciones al acostarse. Las pocas señales marcadas son las que conviene vigilar.",
       signals: [
-        "<b>Sostén lo que ya funciona.</b> Respirar por la nariz de día es lo que mantiene la nariz abierta de noche.",
-        "<b>Cuida las rachas malas.</b> En semanas de estrés, tres minutos de exhalación lenta antes de dormir bastan para no perder terreno.",
-        "<b>Revisa las 12 señales.</b> Reconocerlas pronto es lo que evita llegar al nivel 3."
+        "Respirar por la nariz de día es lo que mantiene la nariz abierta de noche.",
+        "En semanas de estrés, tres minutos de exhalación lenta antes de dormir sostienen el terreno.",
+        "Reconocer las señales pronto es lo que evita llegar al nivel 3."
       ]
     },
     {
       max: 15,
       badge: "Nivel 2 de 3",
       title: "Tu descanso <em>se está escapando</em>",
-      text: "Aparecen ya varias señales del patrón que veo cada semana en consulta: una respiración que se va a la boca por la noche y un sistema nervioso que no llega a soltar del todo. No duermes mal solo por estrés — el estrés es la consecuencia, no la causa.",
+      text: "Aparecen ya varias señales del patrón que veo cada semana en consulta: la respiración se va a la boca por la noche y el sistema nervioso no llega a soltar. El estrés es la consecuencia, no la causa.",
       signals: [
-        "<b>La boca seca y el desvelo de madrugada</b> suelen ser el mismo problema visto a dos horas distintas.",
-        "<b>La mandíbula apretada</b> es muchas veces el intento del cuerpo de mantener la vía aérea abierta.",
-        "<b>Es reversible.</b> Lo que se entrena de día — nariz, diafragma, ritmo — es lo que cambia la noche."
+        "La boca seca y el desvelo de madrugada son el mismo problema a dos horas distintas.",
+        "La mandíbula apretada suele ser el intento de mantener la vía aérea abierta.",
+        "Es reversible: lo que se entrena de día es lo que cambia la noche."
       ]
     },
     {
       max: 24,
       badge: "Nivel 3 de 3",
       title: "Tu cuerpo lleva tiempo <em>pidiendo aire</em>",
-      text: "Has marcado la mayoría de las señales. Tu descanso no está fallando por falta de horas, sino por cómo respiras mientras duermes: el cuerpo pasa la noche en alerta y por la mañana el cansancio ya no se va con café. Merece la pena tomárselo en serio, y merece la pena empezar hoy.",
+      text: "El descanso no falla por falta de horas, sino por cómo respiras mientras duermes: el cuerpo pasa la noche en alerta y el cansancio ya no se va con café. Merece la pena empezar hoy.",
       signals: [
-        "<b>Cansancio que no cede</b> aunque duermas siete u ocho horas: la señal más repetida en este perfil.",
-        "<b>Nariz tapada, boca abierta, madrugada en vela.</b> Es una cadena, y se rompe por el primer eslabón.",
-        "<b>Habla con un profesional</b> si hay ronquido fuerte o pausas al respirar. Y mientras tanto, empieza a entrenar la respiración nasal."
+        "Cansancio que no cede aunque duermas siete u ocho horas.",
+        "Nariz tapada, boca abierta y madrugada en vela son una misma cadena.",
+        "Con ronquido fuerte o pausas al respirar, conviene consultarlo con un profesional."
       ]
     }
   ];
@@ -863,6 +872,7 @@ h1 em{ font-style:italic; color:var(--rosa); }
     Object.keys(screens).forEach(function (k) {
       screens[k].classList.toggle("is-active", k === name);
     });
+    document.body.classList.toggle("is-result", name === "result");
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
 
@@ -988,9 +998,9 @@ h1 em{ font-style:italic; color:var(--rosa); }
 
     var ul = $("result-signals");
     ul.innerHTML = "";
-    p.signals.forEach(function (html) {
+    p.signals.forEach(function (texto) {
       var li = document.createElement("li");
-      li.innerHTML = html;
+      li.textContent = texto;
       ul.appendChild(li);
     });
 

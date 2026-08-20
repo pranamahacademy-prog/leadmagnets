@@ -18,6 +18,49 @@ publicar en Netlify / Vercel / GitHub Pages o incrustar en un `<iframe>`.
 4. **Resultado + comunidad** — puntuación sobre 24, perfil y acceso al grupo,
    todo en la misma pantalla.
 
+## Publicarlo y compartirlo por enlace
+
+El destino previsto es **GitHub Pages**, que sirve este repositorio tal cual y
+gratis. La rama por defecto ya es la de trabajo y `index.html` está en la raíz,
+así que solo falta activarlo:
+
+1. En GitHub: **Settings → Pages**.
+2. En *Build and deployment*, *Source*: **Deploy from a branch**.
+3. Rama: la que aparece por defecto; carpeta: **/ (root)**. Guardar.
+
+En un par de minutos el test queda en:
+
+    https://pranamahacademy-prog.github.io/leadmagnets/
+
+Ese es el enlace que se manda por mensaje. Si prefieres un dominio propio
+(`test.tudominio.com`), se añade en esa misma pantalla de Pages y se crea un
+CNAME en el DNS; en ese caso hay que cambiar las tres URL absolutas de las
+metaetiquetas `og:url`, `og:image` y `canonical`, al principio del HTML.
+
+### La tarjeta de previsualización
+
+Cuando el enlace llega por privado, Instagram y WhatsApp muestran una tarjeta
+con imagen, título y descripción. La imagen es `og.png` (1200×630, 99 KB, por
+debajo del límite a partir del cual WhatsApp deja de mostrar previsualización
+grande) y se genera con el mismo diseño y las mismas tipografías que la portada.
+
+Si cambias el titular o la imagen, las redes guardan la versión antigua en
+caché durante días. Para forzar el refresco, pasa la URL por el
+[depurador de Facebook](https://developers.facebook.com/tools/debug/) y pulsa
+*Scrape Again*.
+
+### Notas para la automatización de Instagram
+
+- El enlace tiene que ser público: nada de páginas con login por delante.
+- Instagram abre los enlaces en su navegador interno. Por eso el botón final
+  navega en la misma pestaña en lugar de abrir una nueva: así el móvil pasa el
+  enlace a la app de WhatsApp en vez de quedarse atrapado en el navegador.
+- Se pueden añadir parámetros al enlace sin romper nada
+  (`…/leadmagnets/?utm_source=instagram&utm_campaign=test-sueno`), útil si más
+  adelante añades analítica. La página los ignora.
+- La página no carga nada de fuera ni instala cookies, así que no necesita
+  banner de consentimiento.
+
 ### La pantalla final
 
 Está pensada para entrar entera en el viewport, sin scroll y con el botón de

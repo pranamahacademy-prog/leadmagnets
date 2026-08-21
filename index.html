@@ -408,9 +408,10 @@ body.is-result .foot{ display:none; }
 
 .gauge{
   --p:0;
+  --d:clamp(84px, 14svh, 148px);
   position:relative;
-  width:clamp(84px, 14svh, 148px);
-  height:clamp(84px, 14svh, 148px);
+  width:var(--d);
+  height:var(--d);
   margin:0 auto clamp(10px, 1.8svh, 24px);
   border-radius:50%;
   background:
@@ -434,17 +435,18 @@ body.is-result .foot{ display:none; }
 .gauge__inner{ position:relative; z-index:1; text-align:center; line-height:1; }
 .gauge__num{
   font-family:var(--serif);
-  font-size:clamp(1.5rem, 4.4svh, 2.5rem);
+  font-size:calc(var(--d) * .34);
   color:var(--tinta);
 }
-.gauge__num small{ font-size:.42em; color:var(--tinta-tenue); }
+.gauge__num small{ font-size:.4em; color:var(--tinta-tenue); }
 .gauge__label{
   display:block;
-  margin-top:clamp(3px, .7svh, 7px);
-  font-size:.58rem;
+  margin-top:calc(var(--d) * .045);
+  font-size:clamp(7px, calc(var(--d) * .085), 13px);
   font-weight:700;
-  letter-spacing:.2em;
+  letter-spacing:.14em;
   text-transform:uppercase;
+  white-space:nowrap;
   color:var(--tinta-tenue);
 }
 
@@ -554,13 +556,17 @@ body.is-result .foot{ display:none; }
   color:rgba(248,248,243,.66) !important;
 }
 .cta__fine{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  row-gap:.2em;
   margin:clamp(9px, 1.5svh, 16px) auto 0;
   text-align:center;
-  max-width:34ch;
   font-size:.72rem;
   letter-spacing:.05em;
   color:rgba(248,248,243,.5);
 }
+.cta__fine span{ white-space:nowrap; }
 
 .restart{
   display:block;
@@ -602,9 +608,7 @@ body.is-result .foot{ display:none; }
 
   /* Apilado hay que ser más estricto: la lección ocupa cinco líneas y el
      botón tiene que seguir viéndose sin desplazar. */
-  .gauge{ width:clamp(74px, 10.4svh, 98px); height:clamp(74px, 10.4svh, 98px); }
-  .gauge__num{ font-size:clamp(1.3rem, 3.2svh, 1.6rem); }
-  .gauge__label{ font-size:.54rem; }
+  .gauge{ --d:clamp(76px, 10.6svh, 100px); }
   .result__title{ font-size:clamp(1.1rem, 2.7svh, 1.42rem); }
 
   .cta{ padding:clamp(16px, 2.6svh, 30px) var(--gutter); }
@@ -624,8 +628,7 @@ body.is-result .foot{ display:none; }
   body.is-result .wrap{ padding-top:8px; padding-bottom:8px; }
   .cta{ padding-top:14px; padding-bottom:14px; }
   #screen-result .card{ padding-top:14px; padding-bottom:14px; }
-  .gauge{ width:72px; height:72px; margin-bottom:8px; }
-  .gauge__num{ font-size:1.24rem; }
+  .gauge{ --d:74px; margin-bottom:8px; }
   .cta__leccion{ margin-bottom:10px; }
 }
 
@@ -815,7 +818,9 @@ body.is-result .foot{ display:none; }
         <span id="cta-boton">Quiero entrar</span>
       </a>
 
-      <p class="cta__fine">Grupo gratuito de WhatsApp · Puedes salir cuando quieras</p>
+      <p class="cta__fine">
+        <span>Grupo gratuito de WhatsApp</span><span>Puedes salir cuando quieras</span>
+      </p>
     </div>
     </div>
 

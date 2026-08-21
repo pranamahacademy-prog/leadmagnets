@@ -1,6 +1,6 @@
 # Lead magnets · Método Pranamah
 
-## Test interactivo — «Las 12 señales de que no duermes mal por estrés»
+## Test interactivo — «Descubre la calidad de tu sueño»
 
 `index.html` es el test de 8 preguntas que lleva a la comunidad de WhatsApp.
 
@@ -15,8 +15,22 @@ publicar en Netlify / Vercel / GitHub Pages o incrustar en un `<iframe>`.
    al responder. Se puede volver atrás y las respuestas se guardan en el
    navegador, así que si alguien cierra a mitad, retoma donde lo dejó.
 3. **Cálculo** — dos segundos de espera antes del resultado.
-4. **Resultado + comunidad** — bienestar del sueño sobre 10, perfil y acceso al
-   grupo, todo en la misma pantalla.
+4. **Resultado + comunidad** — bienestar del sueño sobre 10, perfil, una
+   mini-lección personalizada y el acceso al grupo, en la misma pantalla.
+
+### La mini-lección del CTA
+
+El bloque final no es igual para todos. Según el perfil cambian el arranque
+—un titular y dos párrafos— y el texto del botón:
+
+| Perfil | Arranque | Botón |
+|---|---|---|
+| Descanso sólido | «Dormir 7 u 8 horas no siempre significa descansar bien.» | Quiero aprender más |
+| Descanso en riesgo | «Puede que te hayas acostumbrado, pero no significa que sea normal.» | Quiero entrar |
+| Descanso comprometido | «Quizá no seas simplemente "una persona que duerme mal".» | Seguir aprendiendo |
+
+La invitación a la comunidad que cierra el bloque es la misma en los tres casos.
+Todo ello vive en `PROFILES`, en los campos `ctaTitulo`, `ctaLineas` y `ctaBoton`.
 
 ## Publicarlo y compartirlo por enlace
 
@@ -79,8 +93,10 @@ siempre a la vista. Para conseguirlo se adapta al espacio disponible:
 - **A partir de 900 px de ancho** el diagnóstico y el bloque de comunidad van en
   dos columnas, así que la altura es la del más alto y caben también las tres
   señales del perfil.
-- **En móvil**, apilados, no hay sitio para las tres señales además del acceso a
-  la comunidad, así que se ocultan: mandan la puntuación, el perfil y el botón.
+- **En móvil**, apilados, no caben las tres señales ni el texto del perfil
+  además de la mini-lección, y como esta última dice lo mismo con otras
+  palabras, se ocultan los dos primeros: quedan la puntuación, el título del
+  perfil y la lección que lleva al botón.
 
 Comprobado sin scroll de 360×640 a 1440×900.
 

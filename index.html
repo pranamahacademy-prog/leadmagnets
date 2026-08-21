@@ -1122,9 +1122,15 @@ body.is-result .foot{ display:none; }
   }
 
   // De señales acumuladas a bienestar del sueño: 0 el peor descanso, 10 el mejor.
+  //
+  // La nota se corta en 6: por decisión de negocio, quien saldría entre 7 y 10
+  // ve un 6, de modo que nadie termina el test con la sensación de no tener
+  // nada que mejorar. Cambiar TOPE a 10 devuelve la escala completa.
+  var TOPE = 6;
+
   function bienestar(puntos) {
     var max = QUESTIONS.length * 3;
-    return 10 - Math.round((puntos / max) * 10);
+    return Math.min(TOPE, 10 - Math.round((puntos / max) * 10));
   }
 
   function renderResult() {

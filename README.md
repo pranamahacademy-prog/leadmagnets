@@ -136,7 +136,13 @@ Por dentro se suman **señales**: de 0 a 24, donde más es peor. Lo que se ense�
 es lo contrario, el **bienestar del sueño de 0 a 10**, donde 10 es un descanso
 excelente. La conversión está en la función `bienestar()`:
 
-    nota = 10 - redondeo(señales / 24 × 10)
+    nota = mín(6, 10 - redondeo(señales / 24 × 10))
+
+**La nota está topada en 6.** Por decisión de negocio, quien saldría entre 7 y
+10 ve un 6, para que nadie termine el test con la sensación de no tener nada
+que mejorar. La constante `TOPE` lo controla: ponerla a 10 devuelve la escala
+completa. Con el tope puesto, el verde del aro no aparece nunca — la nota más
+alta posible, 6, cae en la banda ámbar.
 
 El aro se rellena en proporción a la nota, así que un aro lleno es buena señal,
 y cambia de color como un semáforo:

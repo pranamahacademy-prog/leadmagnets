@@ -340,6 +340,22 @@ h1 em, h2 em{ font-style:italic; }
   padding:clamp(28px, 4.2svh, 44px) clamp(22px, 4vw, 44px);
 }
 .diag__cabecera{ text-align:center; }
+.diag--det .diag__cabecera .diag__texto:first-child{ margin-top:0; }
+
+/* Orden: nivel → el siguiente paso → el detalle. En móvil son tres bloques
+   apilados; el botón de la comunidad se ve sin tener que bajar. */
+.diag--cab{ grid-area:cab; }
+.cta{ grid-area:cta; }
+.diag--det{ grid-area:det; }
+.resultado__grid{ grid-template-areas:"cab" "cta" "det"; }
+@media (max-width:899px){
+  .cta .kicker{ order:1; }
+  .cta h2{ order:2; }
+  .cta .btn{ order:3; }
+  .cta__nota{ order:4; }
+  .cta__texto{ order:5; }
+  .cta__firma{ order:6; }
+}
 /* Aro con la nota sobre 10 (como en el test de sueño, con los colores de la marca) */
 .nota{
   --d:clamp(104px, 14svh, 128px);
@@ -359,8 +375,8 @@ h1 em, h2 em{ font-style:italic; }
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   line-height:1;
 }
-.nota__num{ font-family:var(--serif); font-size:calc(var(--d) * .56); letter-spacing:-.02em; }
-.nota__num small{ font-size:.34em; letter-spacing:0; }
+.nota__num{ position:relative; font-family:var(--serif); font-size:calc(var(--d) * .56); letter-spacing:-.02em; }
+.nota__num small{ position:absolute; left:100%; bottom:.3em; margin-left:.04em; font-size:.3em; letter-spacing:0; }
 .nota__etiqueta{
   margin-top:2px;
   font-size:calc(var(--d) * .08); font-weight:700; letter-spacing:.14em; text-transform:uppercase; white-space:nowrap;
@@ -521,7 +537,14 @@ h1 em, h2 em{ font-style:italic; }
   .diag__nivel h2{ text-wrap:balance; }
   .nota{ flex:none; --d:clamp(100px, 15svh, 132px); margin:0; }
   .diag .diag__nivel h2{ font-size:clamp(1.4rem, 3.5svh, 2.1rem); }
-  .resultado__grid{ grid-template-columns:1.16fr .84fr; gap:20px; }
+  .resultado__grid{
+    grid-template-columns:1.16fr .84fr;
+    grid-template-rows:auto 1fr;
+    grid-template-areas:"cab cta" "det cta";
+    gap:0 20px;
+  }
+  .diag--cab{ border-radius:8px 8px 0 0; padding-bottom:0 !important; }
+  .diag--det{ border-radius:0 0 8px 8px; padding-top:clamp(8px, 1.4svh, 18px) !important; }
   .diag{ padding-top:clamp(14px, 2.2svh, 40px); padding-bottom:clamp(14px, 2.2svh, 40px); }
   .insignia{ margin-bottom:clamp(8px, 1.6svh, 16px); }
   .area{ margin-top:clamp(12px, 2.2svh, 28px); padding-top:clamp(12px, 2.2svh, 28px); }
@@ -558,6 +581,8 @@ h1 em, h2 em{ font-style:italic; }
   .diag .diag__nivel h2{ font-size:clamp(1.3rem, 5.6vw, 1.75rem); line-height:1.2; text-wrap:balance; }
   .nota{ flex:none; --d:clamp(100px, 28vw, 124px); margin:0; }
   .diag{ padding-top:22px; padding-bottom:24px; }
+  .cta .btn{ margin-top:18px; }
+  .cta__nota{ margin-bottom:6px; }
   .resultado__grid, .aviso{ width:100%; max-width:640px; margin-left:auto; margin-right:auto; }
 }
 @media (max-width:899px) and (max-height:700px){
@@ -649,7 +674,7 @@ h1 em, h2 em{ font-style:italic; }
   <section class="screen resultado" id="pantalla-resultado" aria-labelledby="r-titulo">
     <div class="resultado__grid">
 
-      <article class="diag">
+      <article class="diag diag--cab">
         <div class="diag__cabecera">
           <div class="diag__top">
           <div class="nota" id="nota" role="img" aria-label="">
@@ -667,6 +692,21 @@ h1 em, h2 em{ font-style:italic; }
           <h2 id="r-titulo">…</h2>
           </div>
           </div>
+        </div>
+      </article>
+
+      <aside class="cta" aria-labelledby="cta-titulo">
+        <p class="kicker">El siguiente paso</p>
+        <h2 id="cta-titulo">Respiras unas 20.000 veces al día y, probablemente, nadie te ha enseñado a <em>observar</em> cómo lo haces.</h2>
+        <p class="cta__texto" id="cta-nivel"></p>
+        <p class="cta__texto" id="cta-cierre"></p>
+        <a class="btn" id="cta-enlace" href="#">Quiero aprender a respirar mejor</a>
+        <p class="cta__nota">Te lleva a mi comunidad gratuita de WhatsApp</p>
+        <p class="cta__firma">Carmen · Método Pranamah</p>
+      </aside>
+
+      <article class="diag diag--det">
+        <div class="diag__cabecera">
           <p class="diag__texto" id="r-texto"></p>
           <p class="diag__texto" id="r-texto-2"></p>
         </div>
@@ -683,15 +723,6 @@ h1 em, h2 em{ font-style:italic; }
         </div>
       </article>
 
-      <aside class="cta" aria-labelledby="cta-titulo">
-        <p class="kicker">El siguiente paso</p>
-        <h2 id="cta-titulo">Respiras unas 20.000 veces al día y, probablemente, nadie te ha enseñado a <em>observar</em> cómo lo haces.</h2>
-        <p class="cta__texto" id="cta-nivel"></p>
-        <p class="cta__texto" id="cta-cierre"></p>
-        <a class="btn" id="cta-enlace" href="#">Quiero aprender a respirar mejor</a>
-        <p class="cta__nota">Te lleva a mi comunidad gratuita de WhatsApp</p>
-        <p class="cta__firma">Carmen · Método Pranamah</p>
-      </aside>
 
     </div>
 
@@ -977,6 +1008,25 @@ h1 em, h2 em{ font-style:italic; }
 
   var pintadaEn = 0;
 
+  // El bloque de la pregunta reserva la altura de la más larga, así las
+  // respuestas no cambian de sitio al pasar de una pregunta a otra.
+  function fijarAlturaPregunta() {
+    var q = document.querySelector(".q");
+    if (!q || !pantallas.test.classList.contains("is-active")) return;
+    var k = $("q-kicker"), t = $("q-titulo"), h = $("q-pista");
+    var antes = [k.textContent, t.textContent, h.textContent, h.hidden];
+    q.style.minHeight = "";
+    var max = 0;
+    PREGUNTAS.forEach(function (p) {
+      k.textContent = p.kicker; t.textContent = p.titulo;
+      h.textContent = p.pista; h.hidden = !p.pista;
+      max = Math.max(max, Math.ceil(q.getBoundingClientRect().height));
+    });
+    k.textContent = antes[0]; t.textContent = antes[1]; h.textContent = antes[2]; h.hidden = antes[3];
+    q.style.minHeight = max + "px";
+  }
+  window.addEventListener("resize", fijarAlturaPregunta);
+
   function pintarPregunta() {
     var q = PREGUNTAS[actual];
     $("q-kicker").textContent = q.kicker;
@@ -1000,6 +1050,7 @@ h1 em, h2 em{ font-style:italic; }
     });
 
     pintarProgreso();
+    fijarAlturaPregunta();
     pintadaEn = performance.now();
     // Si hubo que bajar para responder, la pregunta nueva empieza arriba.
     if (window.scrollY > 0) window.scrollTo(0, 0);

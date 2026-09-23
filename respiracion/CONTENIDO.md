@@ -355,9 +355,9 @@ un profesional sanitario». Es la única indicación sanitaria del test.
 | Pantalla | Contenido |
 |---|---|
 | **1 · Portada** | Círculo que respira, antetítulo, titular, regla arena, entradilla, subtítulo, botón «Empezar test», «12 preguntas · Resultado al momento». |
-| **2 a 13 · Preguntas** | Una por pantalla. Arriba, una línea fina de progreso y «3 de 12». Debajo, el antetítulo, la pregunta en Playfair, una pista opcional de una línea y 4 botones grandes a todo el ancho de la columna. Al tocar una respuesta, avanza sola en 0,3 s. «← Anterior» discreto debajo. |
+| **2 a 13 · Preguntas** | Una por pantalla. El bloque de la pregunta reserva la altura de la más larga, así que el antetítulo y las respuestas están siempre en el mismo sitio y no parece que se cambie de pantalla. Arriba, una línea fina de progreso y «3 de 12». Debajo, el antetítulo, la pregunta en Playfair, una pista opcional de una línea y 4 botones grandes a todo el ancho de la columna. Al tocar una respuesta, avanza sola en 0,3 s. «← Anterior» discreto debajo. |
 | **14 · Cálculo** | Círculo que respira, «Leyendo tus respuestas…» y debajo «Comprobando qué señales se repiten en tu caso.», 1,6 s. |
-| **15 · Resultado** | Tarjeta crema: insignia del nivel, titular, texto del nivel, bloque del área predominante y mapa respiratorio. Bloque azul noche: CTA. En escritorio van en dos columnas; en móvil, apilados. |
+| **15 · Resultado** | Primero el nivel: aro con la nota (la cifra centrada en el aro), insignia y titular. Justo después, el bloque azul noche de «El siguiente paso»; en móvil el botón de la comunidad va nada más acabar el titular del CTA, así que se ve sin desplazarse, y los textos del CTA van debajo del botón. Después, el detalle: textos del nivel, área predominante y mapa respiratorio. En escritorio, nivel y detalle forman una sola tarjeta a la izquierda y el CTA va a la derecha. |
 
 Diseño según el manual de marca: fondo blanco roto, tarjetas y opciones en
 crema, todo el texto en azul noche, arena solo como superficie (botones, regla,

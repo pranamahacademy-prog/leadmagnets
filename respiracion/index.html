@@ -895,12 +895,18 @@ h1 em, h2 em{ font-style:italic; }
   /* ══════════════════════════ NOTA SOBRE 10 ══════════════════════════
      10 sería una respiración sin ninguna señal. Cada nivel tiene su
      franja, así que la nota nunca contradice al nivel:
-       nivel 1 → 6 · nivel 2 → de 6 a 4 · nivel 3 → de 3 a 1
+       nivel 1 → de 9 a 7 · nivel 2 → de 6 a 4 · nivel 3 → de 3 a 1
      Dentro de la franja, la posición depende del total de puntos.
-     Como en el test de sueño, la nota está topada en 6: nadie termina
-     el test con la sensación de no tener nada que mejorar.            */
+
+     Como en el test de sueño, la nota que se enseña está topada en TOPE
+     (6): quien saldría con 7, 8 o 9 ve un 6 y, con él, el resultado de
+     «Hábitos a revisar». Así nadie termina el test con la sensación de no
+     tener nada que mejorar. Cambiar TOPE a 10 devuelve la escala completa
+     y vuelve a mostrar «Buena base».                                  */
+  var TOPE = 6;
+
   var FRANJAS = {
-    1: { alta: 6, baja: 6, totalMin: 0,  totalMax: 11 },
+    1: { alta: 9, baja: 7, totalMin: 0,  totalMax: 11 },
     2: { alta: 6, baja: 4, totalMin: 6,  totalMax: 20 },
     3: { alta: 3, baja: 1, totalMin: 14, totalMax: 36 }
   };
@@ -921,7 +927,7 @@ h1 em, h2 em{ font-style:italic; }
       total: total,
       frecuentes: frecuentes,
       nivel: nivelDe(total, frecuentes),
-      nota: notaDe(nivelDe(total, frecuentes), total),
+      nota: Math.min(TOPE, notaDe(nivelDe(total, frecuentes), total)),
       areas: areas,
       principal: areaPrincipal(areas)
     };
@@ -1066,7 +1072,10 @@ h1 em, h2 em{ font-style:italic; }
 
   function pintarResultado() {
     var r = evaluar(respuestas);
-    var nv = NIVELES[r.nivel];
+    // El resultado que se enseña sigue a la nota mostrada (con el tope, un
+    // nivel 1 sale como 6 y se presenta como «Hábitos a revisar»).
+    var mostrado = r.nota >= 7 ? 1 : r.nota >= 4 ? 2 : 3;
+    var nv = NIVELES[mostrado];
 
     $("r-insignia").textContent = nv.insignia;
     pintarNota(r.nota, nv.insignia);
@@ -1074,7 +1083,7 @@ h1 em, h2 em{ font-style:italic; }
     $("r-texto").textContent    = nv.texto;
     $("r-texto-2").textContent  = nv.texto2;
 
-    var area = r.principal ? AREAS[r.principal] : SIN_AREA[r.nivel === 1 ? 1 : 2];
+    var area = r.principal ? AREAS[r.principal] : SIN_AREA[mostrado === 1 ? 1 : 2];
     $("a-kicker").textContent = r.principal ? nv.kickerArea : "En tu caso";
     $("a-titulo").textContent = area.titulo;
     $("a-texto").textContent  = area.texto;

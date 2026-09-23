@@ -149,20 +149,25 @@ Por qué así:
 
 Encima del nivel, un aro muestra una nota de 0 a 10 con la etiqueta «Tu nivel»,
 igual que el medidor del test de sueño. 10 sería una respiración sin ninguna
-señal. Cada nivel tiene su franja, así que la nota nunca contradice al nivel:
+señal. Cada nivel tiene su franja, y dentro de ella la nota baja cuantos más
+puntos hay:
 
-| Nivel | Nota | Cómo se reparte dentro de la franja |
+| Nivel calculado | Nota calculada | Lo que se enseña |
 |---|---|---|
-| 1 · Buena base | 6 | siempre 6 |
-| 2 · Hábitos a revisar | de 6 a 4 | total 6 o menos → 6 … total 20 o más → 4 |
-| 3 · Merece atención | de 3 a 1 | total 14 o menos → 3 … total 36 → 1 |
+| 1 · Buena base | de 9 a 7 | **6** y el resultado de «Hábitos a revisar» |
+| 2 · Hábitos a revisar | de 6 a 4 (total 6 o menos → 6 … 20 o más → 4) | la misma nota y su resultado |
+| 3 · Merece atención | de 3 a 1 (total 14 o menos → 3 … 36 → 1) | la misma nota y su resultado |
 
-Como en el test de sueño, la nota está topada en 6: quien saldría con 7, 8 o 9
-ve un 6, para que nadie termine el test con la sensación de no tener nada que
-mejorar. Por eso un 6 puede ser «Buena base» o «Hábitos a revisar»; lo que los
-distingue es el texto del nivel. El aro va en arena sobre una pista gris clara, sin el
-semáforo rojo, ámbar y verde del test de sueño, porque esos colores no están en
-el manual de marca. Las franjas están en `FRANJAS`, en el `<script>`.
+**Tope en 6.** Como en el test de sueño, quien saldría con 7, 8 o 9 ve un 6, para
+que nadie termine el test con la sensación de no tener nada que mejorar. Un 6
+nunca se presenta como «Buena base»: el resultado que se enseña (insignia,
+titular, textos, antetítulo del área y CTA) sigue siempre a la nota mostrada.
+En la práctica, «Buena base» no aparece mientras el tope esté puesto; sus textos
+se conservan en el código y vuelven a salir si la constante `TOPE` pasa a 10.
+
+El aro va en arena sobre una pista gris clara, sin el semáforo rojo, ámbar y
+verde del test de sueño, porque esos colores no están en el manual de marca. Las
+franjas están en `FRANJAS` y el tope en `TOPE`, en el `<script>`.
 
 ## 9. Sistema secundario por áreas
 

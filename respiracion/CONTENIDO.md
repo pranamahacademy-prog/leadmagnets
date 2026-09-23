@@ -72,13 +72,13 @@ aparece un antetítulo breve que sitúa la escena.
 | 3 | Al despertar | ¿Te despiertas con la boca seca? | — | A · Nariz y boca |
 | 4 | En reposo | Estando en calma, ¿se oye tu respiración? | Por ejemplo, frente al ordenador o leyendo. | B · Volumen |
 | 5 | Suspiros | A lo largo del día, ¿se te escapan suspiros o grandes bocanadas de aire? | Como si una respiración normal no bastara. | B · Volumen |
-| 6 | Esa sensación | ¿Te pasa que coges aire hondo y aun así no terminas de llenar los pulmones? | — | B · Volumen |
+| 6 | Para calmarte | Cuando quieres calmarte, ¿coges todo el aire que puedes? | Una inspiración bien grande, de las de «respira hondo». | B · Volumen |
 | 7 | Dónde se mueve | Cuando respiras sin pensar, ¿se mueve sobre todo la parte alta del pecho? | Más que la tripa y las costillas de abajo. Si dudas, obsérvalo ahora. | C · Mecánica |
 | 8 | Cuello y hombros | Al coger aire, ¿se te suben los hombros o se tensa el cuello? | En una respiración normal, sin hacerla más grande. | C · Mecánica |
 | 9 | En movimiento | Al caminar deprisa o subir una cuesta, ¿acabas abriendo la boca para respirar? | — | D · Movimiento |
 | 10 | Pequeños esfuerzos | ¿Te quedas sin aliento con esfuerzos pequeños, como subir dos pisos por la escalera? | — | D · Movimiento |
-| 11 | Concentración | Cuando te concentras, ¿te sorprendes aguantando la respiración? | Frente a la pantalla, leyendo un correo, en una tarea que te absorbe. | E · Bajo presión |
-| 12 | Bajo presión | Con el estrés del día a día, ¿notas que respiras más rápido o más fuerte? | Una prisa, un imprevisto, una conversación tensa. | E · Bajo presión |
+| 11 | Esa sensación | ¿Te pasa que coges aire hondo y aun así no terminas de llenar los pulmones? | — | E · Aire y tensión |
+| 12 | Bajo presión | Con el estrés del día a día, ¿notas que respiras más rápido o más fuerte? | Una prisa, un imprevisto, una conversación tensa. | E · Aire y tensión |
 
 ### Cómo se eligieron
 
@@ -92,7 +92,7 @@ respiración?» y «¿aporta algo que no digan las demás?».
 | 3 · Boca durante el día sin darte cuenta | **Se queda** (2) | Con escenas concretas (trabajar, leer, ver una serie) que se reconocen al instante. |
 | 4 · Boca seca al despertar | **Se queda** (3) | Es la única pregunta relacionada con la noche. Recoge la respiración bucal nocturna sin entrar en el terreno del test de sueño. |
 | 5 · Suspiros y 6 · Bocanada | **Fusionadas** (5) | Fisiológicamente son el mismo gesto, una respiración aumentada. Por separado duplicarían el peso de una misma señal. |
-| 7 · No llenar los pulmones | **Se queda** (6) | Es la paradoja de la sobrerrespiración: mucho aire y aun así sensación de falta de aire. |
+| 7 · No llenar los pulmones | **Se queda** (11) | Es la paradoja de la sobrerrespiración: mucho aire y aun así sensación de falta de aire. Cuenta en el área E, que es donde el encargo sitúa la sensación de «aire insuficiente». |
 | 8 · Respiración que se escucha o se nota | **Se queda** (4) | Se deja solo en «se oye», que es concreto. «Se nota claramente» era ambiguo. |
 | 9 · Pecho alto / hombros | **Separada en dos** (7 y 8) | Dónde se mueve y quién trabaja (cuello, hombros) son observaciones distintas. Separadas, cada una mide una sola cosa. |
 | 10 · Sin aire en escaleras | **Se queda** (10) | Con «esfuerzos pequeños» para que cuente lo desproporcionado, no el cansancio normal. |
@@ -100,7 +100,8 @@ respiración?» y «¿aporta algo que no digan las demás?».
 | 12 · Cuesta recuperar tras un esfuerzo pequeño | **Fuera** | Se solapa casi del todo con la 10 y depende mucho de la forma física. |
 | 13 · Estrés → respirar más rápido/grande | **Se queda** (12) | Con «el estrés del día a día», que es lo que distingue una respuesta sensible de una normal ante un susto. |
 | 14 · Cuesta respirar solo por la nariz sin esfuerzo intenso | **Fuera** | Es la misma pregunta que la 11 de partida. |
-| *(nueva)* Aguantar la respiración al concentrarte | **Añadida** (11) | Es muy reconocible en profesionales de pantalla (el efecto «¡eso lo hago yo!») y detecta la respiración irregular: pausas seguidas de suspiros. |
+| *(nueva)* Coger todo el aire posible para calmarse | **Añadida** (6) | El encargo pide detectar, sin explicarla todavía, la tendencia a creer que respirar hondo es respirar mejor. Ninguna de las preguntas de partida medía ese hábito voluntario, que es el que la cultura del «respira hondo» refuerza. |
+| *(descartada)* Aguantar la respiración al concentrarte | **Fuera** | Se probó como pregunta propia del área E, pero no estaba en el encargo y dejaba el test en 13 preguntas al añadir la anterior. Se prioriza el objetivo de 10–12. |
 
 ## 6. Puntuación de cada respuesta
 
@@ -152,7 +153,7 @@ Por qué así:
 | B · Volumen / sobrerrespiración | 4, 5, 6 | 9 | Volumen de aire |
 | C · Mecánica respiratoria | 7, 8 | 6 | Pecho y hombros |
 | D · Respiración en movimiento | 9, 10 | 6 | En movimiento |
-| E · Desregulación cotidiana | 11, 12 | 6 | Bajo presión |
+| E · Desregulación cotidiana | 11, 12 | 6 | Aire y tensión |
 
 Reglas:
 
@@ -162,10 +163,10 @@ Reglas:
    puntos que preguntas (más de 3 en A y B, más de 2 en C, D y E).
 3. El **área predominante** es la de mayor proporción entre las que destacan.
 4. **Empates**: gana la primera de este orden: Volumen → Nariz → Mecánica →
-   Movimiento → Bajo presión. El volumen va primero porque es el hallazgo más
+   Movimiento → Aire y tensión. El volumen va primero porque es el hallazgo más
    revelador para quien cree que respirar más es respirar mejor; movimiento y
-   estrés van al final porque son los que más dependen de otros factores
-   (forma física, carga de trabajo).
+   aire y tensión van al final porque son los que más dependen de otros
+   factores (forma física, estrés, estado de salud).
 5. **Si ninguna área destaca**, se muestra un texto neutro (ver abajo). En el
    nivel 3 eso no puede pasar, porque siempre hay un área que destaca.
 
@@ -179,8 +180,9 @@ Hace que el resultado se perciba como propio sin parecer un informe clínico.
 
 > **Tu respiración tiene una buena *base***
 >
-> Tu respiración parece adaptarse bien a tu día a día. Puede que aparezca algún
-> hábito puntual, pero las señales no se repiten.
+> Tu respiración parece adaptarse bien a tu día a día. Puede que destaque algún
+> hábito concreto, pero las señales frecuentes son pocas y no forman un patrón
+> general.
 >
 > Y un dato que sorprende a mucha gente: respirar bien no es respirar más. Una
 > respiración eficiente suele ser tranquila, nasal y casi imperceptible en reposo.
@@ -189,7 +191,7 @@ Antetítulo del bloque de área: **Lo que merece la pena observar**
 
 ### Nivel 2 · Hábitos a revisar
 
-> **Tu respiración trabaja *más* de lo necesario**
+> **Tu respiración puede estar trabajando *más* de lo necesario**
 >
 > Aparecen varias señales de que tu respiración puede estar haciendo un esfuerzo
 > extra en tu día a día. Seguramente llevas tiempo así y lo has normalizado.
@@ -212,48 +214,54 @@ Antetítulo del bloque de área: **Dónde se nota más**
 
 ## 11. Variaciones según el área predominante
 
+Un área puede destacar con una sola respuesta alta, así que ningún texto da por
+hechas a la vez las dos señales de su área: se enlazan con «o», nunca con «y».
+Así el resultado no atribuye a nadie algo que acaba de contestar que no le pasa.
+
 **A · Nariz y boca: «La nariz se queda a un lado»**
 En tu caso, las señales aparecen especialmente en la respiración nasal: la nariz
-se carga con facilidad y la boca toma el relevo, muchas veces sin que te des
+se carga con facilidad o la boca toma el relevo, muchas veces sin que te des
 cuenta. La nariz no es solo una entrada de aire: lo filtra, lo calienta, lo
 humedece y marca un ritmo más pausado. Recuperarla suele ser el primer paso.
 
-**B · Volumen de aire: «Respiras más aire del que necesitas»**
+**B · Volumen de aire: «Una tendencia a respirar de más»**
 En tu caso destaca la tendencia a respirar más fuerte o más grande de lo
-necesario, que se nota en suspiros, bocanadas o una respiración que se oye. Es
-muy común pensar que coger más aire es respirar mejor, pero en reposo una
-respiración eficiente es tranquila y casi imperceptible. Paradójicamente,
-respirar de más puede alimentar esa sensación de que el aire no llega.
+necesario, que puede notarse en suspiros, bocanadas, una respiración que se oye
+o la costumbre de coger mucho aire para calmarte. Es muy común pensar que coger
+más aire es respirar mejor, pero en reposo una respiración eficiente es
+tranquila y casi imperceptible. Paradójicamente, respirar de más puede alimentar
+la sensación de que el aire no llega.
 
 **C · Pecho y hombros: «Una respiración alta y tensa»**
-En tu caso destaca un patrón respiratorio alto: el movimiento se concentra en la
-parte alta del pecho, y el cuello y los hombros participan más de la cuenta. En
+En tu caso destaca un patrón respiratorio alto: el movimiento tiende a
+concentrarse en la parte alta del pecho, o el cuello y los hombros participan
+más de la cuenta. En
 reposo, el trabajo debería hacerlo sobre todo el diafragma, con un movimiento
 suave en la zona de la tripa y las costillas de abajo. Cuando cuello y hombros
 toman el relevo, respirar cuesta más y esa zona acumula tensión.
 
 **D · En movimiento: «Poco margen cuando te mueves»**
 En tu caso aparece sobre todo dificultad para mantener una respiración tranquila
-durante el movimiento: la boca se abre pronto y el aliento se acaba con
-esfuerzos pequeños. Influye la forma física, claro, pero también algo que casi
+durante el movimiento: la boca se abre pronto o el aliento se acaba antes de lo
+que esperarías. Influye la forma física, claro, pero también algo que casi
 nadie entrena: cómo tolera tu cuerpo esa sensación de «necesito más aire». Si la
 falta de aire es nueva o va a más, consúltalo con un profesional sanitario.
 
-**E · Bajo presión: «Tu respiración sigue el ritmo del día»**
-En tu caso, las señales aparecen sobre todo cuando el día aprieta: la
-respiración se acelera con las prisas o se queda en pausa mientras te
-concentras. Va a remolque de lo que pasa fuera, en lugar de ayudarte a
-sostenerlo. Es una de las pocas funciones automáticas que también puedes
-dirigir, y eso se entrena.
+**E · Aire y tensión: «Una respiración que se desajusta con facilidad»**
+En tu caso, las señales aparecen sobre todo como una sensación de aire que no
+termina de llenarte o como una respiración que se acelera cuando el día aprieta.
+Es habitual responder a esa sensación cogiendo más aire, y eso no siempre la
+calma. La respiración es una de las pocas funciones automáticas que también
+puedes dirigir, y eso se entrena.
 
 **Ninguna área destaca, en el nivel 1: «Ninguna área destaca»** (antetítulo «En tu caso»)
-Las señales que aparecen son sueltas y ocasionales, sin un patrón que se repita.
-Un buen punto de partida para observar tu respiración con curiosidad, sin buscar
+Si aparece alguna señal, es aislada y no forma un patrón en ninguna área. Un
+buen punto de partida para observar tu respiración con curiosidad, sin buscar
 nada que corregir.
 
 **Ninguna área destaca, en el nivel 2: «Pequeñas señales repartidas»** (antetítulo «En tu caso»)
 No destaca un área concreta: las señales aparecen repartidas en distintos
-momentos de tu día. Por separado parecen poca cosa; juntas dibujan una
+momentos de tu día. Por separado parecen poca cosa; juntas pueden dibujar una
 respiración que trabaja más de lo necesario.
 
 ## 12. CTA final
@@ -267,8 +275,7 @@ Es un bloque en azul noche, la única pieza en negativo de todo el test.
 >
 > *(frase según el nivel)*
 >
-> Si quieres aprender a reeducar estos patrones y empezar a respirar de una forma
-> más funcional, puedes hacerlo conmigo dentro de Método Pranamah.
+> *(cierre según el nivel)*
 >
 > **[ QUIERO APRENDER A RESPIRAR MEJOR ]**
 >
@@ -286,6 +293,17 @@ Frase según el nivel:
   profundas. Se trabaja con método: observar, reeducar y dar tiempo al cuerpo
   para que vuelva a un patrón más tranquilo.
 
+Cierre según el nivel:
+
+- **Nivel 1:** Si quieres aprender a observar y afinar tu respiración, puedes
+  hacerlo conmigo dentro de Método Pranamah.
+- **Niveles 2 y 3:** Si quieres aprender a reeducar estos patrones y empezar a
+  respirar de una forma más funcional, puedes hacerlo conmigo dentro de Método
+  Pranamah.
+
+En el nivel 1 no se habla de «reeducar estos patrones»: sería contradecir el
+resultado que la persona acaba de leer.
+
 **Destino del botón:** la constante `CTA_URL`, al principio del `<script>` de
 `index.html`. Mientras esté vacía, el botón se ve pero no navega.
 
@@ -300,9 +318,10 @@ al día».
 Va al pie de la pantalla de resultado, en letra pequeña:
 
 > Este test es educativo y orientativo y no sustituye una valoración médica. Si
-> notas falta de aire intensa o que aparece de repente, dolor en el pecho, mareos
-> fuertes o desmayos, consulta con un profesional sanitario: son señales que no
-> deben atribuirse simplemente a la forma de respirar.
+> notas falta de aire intensa, nueva o que va a más, dolor en el pecho, mareos
+> fuertes, desmayos u otra señal que te preocupe, consulta con un profesional
+> sanitario: son señales que no deben atribuirse simplemente a la forma de
+> respirar.
 
 Además, el texto del área «En movimiento», la más ligada a la falta de aire,
 lleva su propia línea: «Si la falta de aire es nueva o va a más, consúltalo con
@@ -315,7 +334,7 @@ test.
 |---|---|
 | **1 · Portada** | Círculo que respira, antetítulo, titular, regla arena, entradilla, subtítulo, botón «Empezar test», «12 preguntas · Resultado al momento». |
 | **2 a 13 · Preguntas** | Una por pantalla. Arriba, una línea fina de progreso y «3 de 12». Debajo, el antetítulo, la pregunta en Playfair, una pista opcional de una línea y 4 botones grandes a todo el ancho de la columna. Al tocar una respuesta, avanza sola en 0,3 s. «← Anterior» discreto debajo. |
-| **14 · Cálculo** | Círculo que respira, «Leyendo tus respuestas…», 1,6 s. |
+| **14 · Cálculo** | Círculo que respira, «Leyendo tus respuestas…» y debajo «Comprobando qué señales se repiten en tu caso.», 1,6 s. |
 | **15 · Resultado** | Tarjeta crema: insignia del nivel, titular, texto del nivel, bloque del área predominante y mapa respiratorio. Bloque azul noche: CTA. Debajo, aviso y «Repetir el test». En escritorio van en dos columnas; en móvil, apilados. |
 
 Diseño según el manual de marca: fondo blanco roto, tarjetas y opciones en
@@ -324,9 +343,11 @@ barras, opción elegida), gris solo en líneas finas y sin rosa. Una palabra en
 cursiva por titular. Playfair Display para titulares y Lato para el resto,
 incrustadas en el archivo.
 
-**Sin scroll:** portada y preguntas caben en pantalla en móvil (desde 360×640) y
-en escritorio (desde 1280×720). El resultado cabe entero en escritorio; en móvil
-se desplaza hacia abajo, como es natural en una página de resultados.
+**Sin scroll:** portada y preguntas caben en pantalla en móvil (desde 360×640),
+en tableta y en escritorio (desde 1280×720). El resultado cabe entero en
+escritorio y en tableta horizontal; en móvil y en tableta vertical se desplaza
+hacia abajo, como es natural en una página de resultados, con una columna que no
+pasa del ancho de lectura.
 
 ## 15. Resto de la lógica
 
@@ -334,8 +355,13 @@ se desplaza hacia abajo, como es natural en una página de resultados.
   mitad, al volver retoma donde lo dejó. Se borran al ver el resultado o al
   pulsar «Repetir el test». La clave de guardado es distinta de la del test de
   sueño, así que los dos tests no se pisan aunque estén en el mismo dominio.
+- **Avance automático:** al responder, la pregunta siguiente aparece a los
+  0,3 s, y durante sus primeros 0,25 s ignora toques. Así un doble toque no
+  responde una pregunta que no se ha llegado a ver. Si hubo que desplazarse para
+  responder (móvil en horizontal), la pregunta nueva empieza arriba.
 - **Teclado:** las teclas 1 a 4 responden, las flechas se mueven entre opciones
-  y Retroceso vuelve a la pregunta anterior.
+  (la primera flecha entra en la opción marcada o en «Nunca») y Retroceso vuelve
+  a la pregunta anterior. Tras responder, el foco sigue en las opciones.
 - **Accesibilidad:** las opciones son un grupo de radio. Los cambios de pregunta
   se anuncian a lectores de pantalla y se respeta la preferencia de reducir el
   movimiento.

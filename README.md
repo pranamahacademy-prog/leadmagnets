@@ -8,7 +8,7 @@
 ## Test de respiración — «¿Cómo respiras realmente?»
 
 Doce preguntas de frecuencia sobre hábitos cotidianos (nariz y boca, volumen de
-aire, pecho y hombros, respiración en movimiento y bajo presión). El resultado
+aire, pecho y hombros, respiración en movimiento, y aire y tensión). El resultado
 tiene tres niveles, un texto según el área que más destaca y un mapa de cinco
 barras, y termina con el CTA hacia Método Pranamah.
 

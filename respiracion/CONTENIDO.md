@@ -279,6 +279,8 @@ Es un bloque en azul noche, la única pieza en negativo de todo el test.
 >
 > **[ QUIERO APRENDER A RESPIRAR MEJOR ]**
 >
+> Te lleva a mi comunidad gratuita de WhatsApp
+>
 > *Carmen · Método Pranamah*
 
 Frase según el nivel:
@@ -304,8 +306,10 @@ Cierre según el nivel:
 En el nivel 1 no se habla de «reeducar estos patrones»: sería contradecir el
 resultado que la persona acaba de leer.
 
-**Destino del botón:** la constante `CTA_URL`, al principio del `<script>` de
-`index.html`. Mientras esté vacía, el botón se ve pero no navega.
+**Destino del botón:** la comunidad gratuita de WhatsApp de Carmen
+(`https://chat.whatsapp.com/JKsZH0UaarzAOmlf0Za2Uv`), en la constante `CTA_URL`
+al principio del `<script>` de `index.html`. Se abre en la misma pestaña para
+que, desde el navegador de Instagram, el móvil pase el enlace a WhatsApp.
 
 **Sobre la cifra de 20.000:** un adulto en reposo respira entre 12 y 20 veces por
 minuto, es decir, entre 17.280 y 28.800 veces al día. 20.000 corresponde a unas

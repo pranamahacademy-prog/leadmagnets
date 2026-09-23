@@ -14,9 +14,8 @@ barras, y termina con el CTA hacia Método Pranamah.
 
 - **Todo el contenido y la lógica** (preguntas, puntuación, umbrales, textos de
   resultado, aviso) están explicados en [`respiracion/CONTENIDO.md`](respiracion/CONTENIDO.md).
-- **Enlace del botón final:** la constante `CTA_URL`, al principio del
-  `<script>` de `respiracion/index.html`. Mientras esté vacía, el botón no
-  navega.
+- **Enlace del botón final:** la comunidad de WhatsApp, en la constante
+  `CTA_URL` al principio del `<script>` de `respiracion/index.html`.
 - Igual que el test de sueño, es un único archivo autocontenido, con las
   tipografías incrustadas. Su tarjeta de previsualización es `respiracion/og.png`.
 - Se publica con el mismo workflow de Pages que el test de sueño: basta con que

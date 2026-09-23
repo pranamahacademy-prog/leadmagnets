@@ -153,12 +153,14 @@ señal. Cada nivel tiene su franja, así que la nota nunca contradice al nivel:
 
 | Nivel | Nota | Cómo se reparte dentro de la franja |
 |---|---|---|
-| 1 · Buena base | de 9 a 7 | total 0 → 9 … total 11 → 7 |
+| 1 · Buena base | 6 | siempre 6 |
 | 2 · Hábitos a revisar | de 6 a 4 | total 6 o menos → 6 … total 20 o más → 4 |
 | 3 · Merece atención | de 3 a 1 | total 14 o menos → 3 … total 36 → 1 |
 
-Nadie ve un 10: siempre queda algo que afinar, como en el test de sueño, donde
-la nota está topada. El aro va en arena sobre una pista gris clara, sin el
+Como en el test de sueño, la nota está topada en 6: quien saldría con 7, 8 o 9
+ve un 6, para que nadie termine el test con la sensación de no tener nada que
+mejorar. Por eso un 6 puede ser «Buena base» o «Hábitos a revisar»; lo que los
+distingue es el texto del nivel. El aro va en arena sobre una pista gris clara, sin el
 semáforo rojo, ámbar y verde del test de sueño, porque esos colores no están en
 el manual de marca. Las franjas están en `FRANJAS`, en el `<script>`.
 

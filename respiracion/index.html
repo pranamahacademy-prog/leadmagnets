@@ -330,6 +330,8 @@ h1 em, h2 em{ font-style:italic; }
 .calculo p{ margin:10px 0 0; color:var(--azul); }
 
 /* ---------- Resultado ---------- */
+/* El resultado arranca arriba de la pantalla, con poco margen */
+.app:has(.resultado.is-active){ padding-top:12px; }
 .resultado__grid{
   display:grid;
   gap:16px;
@@ -527,8 +529,7 @@ h1 em, h2 em{ font-style:italic; }
   .opcion{ min-height:clamp(48px, 7svh, 60px); }
 
   /* Resultado */
-  .app:has(.resultado.is-active){ padding-top:clamp(8px, 1.4svh, 40px); padding-bottom:clamp(8px, 1.4svh, 40px); }
-  .resultado{ justify-content:center; }
+  .app:has(.resultado.is-active){ padding-top:12px; padding-bottom:12px; }
   .diag h2{ font-size:clamp(1.6rem, 4svh, 2.35rem); }
   .diag__texto{ margin-top:clamp(8px, 1.4svh, 18px); }
   .insignia{ padding:5px 12px; }

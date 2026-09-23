@@ -145,6 +145,23 @@ Por qué así:
   patrón marcado lleva mayoritariamente al nivel 3. Son estimaciones: cuando
   haya respuestas reales, conviene revisar los cortes en `UMBRALES`.
 
+### La nota sobre 10
+
+Encima del nivel, un aro muestra una nota de 0 a 10 con la etiqueta «Tu nivel»,
+igual que el medidor del test de sueño. 10 sería una respiración sin ninguna
+señal. Cada nivel tiene su franja, así que la nota nunca contradice al nivel:
+
+| Nivel | Nota | Cómo se reparte dentro de la franja |
+|---|---|---|
+| 1 · Buena base | de 9 a 7 | total 0 → 9 … total 11 → 7 |
+| 2 · Hábitos a revisar | de 6 a 4 | total 6 o menos → 6 … total 20 o más → 4 |
+| 3 · Merece atención | de 3 a 1 | total 14 o menos → 3 … total 36 → 1 |
+
+Nadie ve un 10: siempre queda algo que afinar, como en el test de sueño, donde
+la nota está topada. El aro va en arena sobre una pista gris clara, sin el
+semáforo rojo, ámbar y verde del test de sueño, porque esos colores no están en
+el manual de marca. Las franjas están en `FRANJAS`, en el `<script>`.
+
 ## 9. Sistema secundario por áreas
 
 | Área | Preguntas | Máximo | Nombre en el mapa |

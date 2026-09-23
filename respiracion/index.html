@@ -340,6 +340,31 @@ h1 em, h2 em{ font-style:italic; }
   padding:clamp(28px, 4.2svh, 44px) clamp(22px, 4vw, 44px);
 }
 .diag__cabecera{ text-align:center; }
+/* Aro con la nota sobre 10 (como en el test de sueño, con los colores de la marca) */
+.nota{
+  --d:clamp(104px, 14svh, 128px);
+  position:relative;
+  width:var(--d);
+  aspect-ratio:1;
+  margin:0 auto 14px;
+}
+.nota svg{ width:100%; height:100%; transform:rotate(-90deg); }
+.nota__pista{ fill:none; stroke:var(--pista); stroke-width:6; }
+.nota__aro{
+  fill:none; stroke:var(--arena); stroke-width:6; stroke-linecap:round;
+  transition:stroke-dashoffset 1s cubic-bezier(.22,.75,.3,1);
+}
+.nota__dentro{
+  position:absolute; inset:0;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  line-height:1;
+}
+.nota__num{ font-family:var(--serif); font-size:calc(var(--d) * .34); }
+.nota__num small{ font-size:.45em; }
+.nota__etiqueta{
+  margin-top:4px;
+  font-size:calc(var(--d) * .085); font-weight:700; letter-spacing:.14em; text-transform:uppercase; white-space:nowrap;
+}
 .insignia{
   display:inline-block;
   margin:0 0 16px;
@@ -490,6 +515,12 @@ h1 em, h2 em{ font-style:italic; }
   .diag h2{ font-size:clamp(1.6rem, 4svh, 2.35rem); }
   .diag__texto{ margin-top:clamp(8px, 1.4svh, 18px); }
   .insignia{ padding:5px 12px; }
+  /* Aro a la izquierda del nivel: el resultado sigue cabiendo en pantalla */
+  .diag__top{ display:flex; align-items:center; justify-content:center; gap:clamp(16px, 2.4vw, 28px); }
+  .diag__nivel{ flex:0 1 auto; min-width:0; text-align:left; }
+  .diag__nivel h2{ text-wrap:balance; }
+  .nota{ flex:none; --d:clamp(100px, 15svh, 132px); margin:0; }
+  .diag .diag__nivel h2{ font-size:clamp(1.4rem, 3.5svh, 2.1rem); }
   .resultado__grid{ grid-template-columns:1.16fr .84fr; gap:20px; }
   .diag{ padding-top:clamp(14px, 2.2svh, 40px); padding-bottom:clamp(14px, 2.2svh, 40px); }
   .insignia{ margin-bottom:clamp(8px, 1.6svh, 16px); }
@@ -507,6 +538,9 @@ h1 em, h2 em{ font-style:italic; }
 /* Portátiles bajos: el resultado entero sigue cabiendo en pantalla */
 @media (min-width:900px) and (max-height:800px){
   .diag__texto, .area__texto{ line-height:1.5; }
+  .nota{ --d:92px; }
+  .diag__texto + .diag__texto{ margin-top:4px; }
+  .area{ margin-top:10px; padding-top:10px; }
 }
 
 /* Móvil: un poco menos de aire vertical para que la pregunta respire sin scroll */
@@ -609,8 +643,23 @@ h1 em, h2 em{ font-style:italic; }
 
       <article class="diag">
         <div class="diag__cabecera">
+          <div class="diag__top">
+          <div class="nota" id="nota" role="img" aria-label="">
+            <svg viewBox="0 0 100 100" aria-hidden="true">
+              <circle class="nota__pista" cx="50" cy="50" r="46"/>
+              <circle class="nota__aro" id="nota-aro" cx="50" cy="50" r="46"
+                      stroke-dasharray="289.03" stroke-dashoffset="289.03"/>
+            </svg>
+            <div class="nota__dentro" aria-hidden="true">
+              <span class="nota__num"><span id="nota-num">0</span><small>/10</small></span>
+              <span class="nota__etiqueta">Tu nivel</span>
+            </div>
+          </div>
+          <div class="diag__nivel">
           <p class="insignia" id="r-insignia">—</p>
           <h2 id="r-titulo">…</h2>
+          </div>
+          </div>
           <p class="diag__texto" id="r-texto"></p>
           <p class="diag__texto" id="r-texto-2"></p>
         </div>
@@ -843,6 +892,25 @@ h1 em, h2 em{ font-style:italic; }
     return mejor;
   }
 
+  /* ══════════════════════════ NOTA SOBRE 10 ══════════════════════════
+     10 sería una respiración sin ninguna señal. Cada nivel tiene su
+     franja, así que la nota nunca contradice al nivel:
+       nivel 1 → de 9 a 7 · nivel 2 → de 6 a 4 · nivel 3 → de 3 a 1
+     Dentro de la franja, la posición depende del total de puntos.
+     Nadie ve un 10: siempre queda algo que afinar.                   */
+  var FRANJAS = {
+    1: { alta: 9, baja: 7, totalMin: 0,  totalMax: 11 },
+    2: { alta: 6, baja: 4, totalMin: 6,  totalMax: 20 },
+    3: { alta: 3, baja: 1, totalMin: 14, totalMax: 36 }
+  };
+
+  function notaDe(nivel, total) {
+    var f = FRANJAS[nivel];
+    var t = Math.min(Math.max(total, f.totalMin), f.totalMax);
+    var k = (t - f.totalMin) / (f.totalMax - f.totalMin);
+    return f.alta - Math.round(k * (f.alta - f.baja));
+  }
+
   function evaluar(respuestas) {
     var pts = puntos(respuestas);
     var total = pts.reduce(function (s, v) { return s + v; }, 0);
@@ -852,6 +920,7 @@ h1 em, h2 em{ font-style:italic; }
       total: total,
       frecuentes: frecuentes,
       nivel: nivelDe(total, frecuentes),
+      nota: notaDe(nivelDe(total, frecuentes), total),
       areas: areas,
       principal: areaPrincipal(areas)
     };
@@ -973,11 +1042,33 @@ h1 em, h2 em{ font-style:italic; }
   }
 
   /* ══════════════════════════ RESULTADO ══════════════════════════ */
+  function pintarNota(nota, insignia) {
+    var aro = $("nota-aro"), num = $("nota-num"), L = 289.03;
+    $("nota").setAttribute("aria-label", "Tu nivel de respiración: " + nota + " sobre 10. " + insignia + ".");
+    aro.style.transition = "none";
+    aro.style.strokeDashoffset = String(L);
+    num.textContent = "0";
+    aro.getBoundingClientRect();
+    aro.style.transition = "";
+    var destino = L * (1 - nota / 10);
+    if (menosMovimiento) { aro.style.strokeDashoffset = String(destino); num.textContent = String(nota); return; }
+    window.setTimeout(function () { aro.style.strokeDashoffset = String(destino); }, 250);
+    var t0 = null;
+    function paso(ts) {
+      if (t0 === null) t0 = ts;
+      var k = Math.min((ts - t0) / 1000, 1);
+      num.textContent = String(Math.round(nota * (1 - Math.pow(1 - k, 3))));
+      if (k < 1) window.requestAnimationFrame(paso);
+    }
+    window.setTimeout(function () { window.requestAnimationFrame(paso); }, 250);
+  }
+
   function pintarResultado() {
     var r = evaluar(respuestas);
     var nv = NIVELES[r.nivel];
 
     $("r-insignia").textContent = nv.insignia;
+    pintarNota(r.nota, nv.insignia);
     $("r-titulo").innerHTML     = nv.titulo;
     $("r-texto").textContent    = nv.texto;
     $("r-texto-2").textContent  = nv.texto2;

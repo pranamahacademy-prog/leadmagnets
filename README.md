@@ -1,5 +1,27 @@
 # Lead magnets · Método Pranamah
 
+| Test | Archivo | Enlace publicado |
+|---|---|---|
+| «Descubre la calidad de tu sueño» | `index.html` | `https://pranamahacademy-prog.github.io/leadmagnets/` |
+| «¿Cómo respiras realmente?» | `respiracion/index.html` | `https://pranamahacademy-prog.github.io/leadmagnets/respiracion/` |
+
+## Test de respiración — «¿Cómo respiras realmente?»
+
+Doce preguntas de frecuencia sobre hábitos cotidianos (nariz y boca, volumen de
+aire, pecho y hombros, respiración en movimiento y bajo presión). El resultado
+tiene tres niveles, un texto según el área que más destaca y un mapa de cinco
+barras, y termina con el CTA hacia Método Pranamah.
+
+- **Todo el contenido y la lógica** (preguntas, puntuación, umbrales, textos de
+  resultado, aviso) están explicados en [`respiracion/CONTENIDO.md`](respiracion/CONTENIDO.md).
+- **Enlace del botón final:** la constante `CTA_URL`, al principio del
+  `<script>` de `respiracion/index.html`. Mientras esté vacía, el botón no
+  navega.
+- Igual que el test de sueño, es un único archivo autocontenido, con las
+  tipografías incrustadas. Su tarjeta de previsualización es `respiracion/og.png`.
+- Se publica con el mismo workflow de Pages que el test de sueño: basta con que
+  la carpeta `respiracion/` llegue a la rama publicada.
+
 ## Test interactivo — «Descubre la calidad de tu sueño»
 
 `index.html` es el test de 8 preguntas que lleva a la comunidad de WhatsApp.

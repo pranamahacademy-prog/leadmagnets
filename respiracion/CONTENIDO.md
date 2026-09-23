@@ -343,18 +343,12 @@ al día».
 
 ## 13. Aviso
 
-Va al pie de la pantalla de resultado, en letra pequeña:
-
-> Este test es educativo y orientativo y no sustituye una valoración médica. Si
-> notas falta de aire intensa, nueva o que va a más, dolor en el pecho, mareos
-> fuertes, desmayos u otra señal que te preocupe, consulta con un profesional
-> sanitario: son señales que no deben atribuirse simplemente a la forma de
-> respirar.
+Por decisión de negocio, la pantalla de resultado no lleva el aviso general al
+pie (se retiró junto con el botón «Repetir el test»).
 
 Además, el texto del área «En movimiento», la más ligada a la falta de aire,
 lleva su propia línea: «Si la falta de aire es nueva o va a más, consúltalo con
-un profesional sanitario». No hay más avisos: ni en la portada ni durante el
-test.
+un profesional sanitario». Es la única indicación sanitaria del test.
 
 ## 14. Estructura visual y pantallas
 
@@ -363,7 +357,7 @@ test.
 | **1 · Portada** | Círculo que respira, antetítulo, titular, regla arena, entradilla, subtítulo, botón «Empezar test», «12 preguntas · Resultado al momento». |
 | **2 a 13 · Preguntas** | Una por pantalla. Arriba, una línea fina de progreso y «3 de 12». Debajo, el antetítulo, la pregunta en Playfair, una pista opcional de una línea y 4 botones grandes a todo el ancho de la columna. Al tocar una respuesta, avanza sola en 0,3 s. «← Anterior» discreto debajo. |
 | **14 · Cálculo** | Círculo que respira, «Leyendo tus respuestas…» y debajo «Comprobando qué señales se repiten en tu caso.», 1,6 s. |
-| **15 · Resultado** | Tarjeta crema: insignia del nivel, titular, texto del nivel, bloque del área predominante y mapa respiratorio. Bloque azul noche: CTA. Debajo, aviso y «Repetir el test». En escritorio van en dos columnas; en móvil, apilados. |
+| **15 · Resultado** | Tarjeta crema: insignia del nivel, titular, texto del nivel, bloque del área predominante y mapa respiratorio. Bloque azul noche: CTA. En escritorio van en dos columnas; en móvil, apilados. |
 
 Diseño según el manual de marca: fondo blanco roto, tarjetas y opciones en
 crema, todo el texto en azul noche, arena solo como superficie (botones, regla,
@@ -380,8 +374,7 @@ pasa del ancho de lectura.
 ## 15. Resto de la lógica
 
 - **Guardado:** las respuestas se guardan en el navegador. Si alguien cierra a
-  mitad, al volver retoma donde lo dejó. Se borran al ver el resultado o al
-  pulsar «Repetir el test». La clave de guardado es distinta de la del test de
+  mitad, al volver retoma donde lo dejó. Se borran al ver el resultado. La clave de guardado es distinta de la del test de
   sueño, así que los dos tests no se pisan aunque estén en el mismo dominio.
 - **Avance automático:** al responder, la pregunta siguiente aparece a los
   0,3 s, y durante sus primeros 0,25 s ignora toques. Así un doble toque no

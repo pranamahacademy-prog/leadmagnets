@@ -13,7 +13,7 @@ tiene tres niveles, un texto según el área que más destaca y un mapa de cinco
 barras, y termina con el CTA hacia Método Pranamah.
 
 - **Todo el contenido y la lógica** (preguntas, puntuación, umbrales, textos de
-  resultado, aviso) están explicados en [`respiracion/CONTENIDO.md`](respiracion/CONTENIDO.md).
+  resultado) están explicados en [`respiracion/CONTENIDO.md`](respiracion/CONTENIDO.md).
 - **Enlace del botón final:** la comunidad de WhatsApp, en la constante
   `CTA_URL` al principio del `<script>` de `respiracion/index.html`.
 - Igual que el test de sueño, es un único archivo autocontenido, con las

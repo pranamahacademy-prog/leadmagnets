@@ -688,16 +688,6 @@ h1 em, h2 em{ font-style:italic; }
 
     </div>
 
-    <div class="resultado__pie">
-    <p class="aviso">
-      Este test es educativo y orientativo y no sustituye una valoración médica.
-      Si notas falta de aire intensa, nueva o que va a más, dolor en el pecho,
-      mareos fuertes, desmayos u otra señal que te preocupe, consulta con un
-      profesional sanitario: son señales que no deben atribuirse simplemente a la
-      forma de respirar.
-    </p>
-    <button class="repetir" type="button" id="btn-repetir">Repetir el test</button>
-    </div>
   </section>
 
 </main>
@@ -1128,12 +1118,6 @@ h1 em, h2 em{ font-style:italic; }
     pintarPregunta();
   });
   $("btn-volver").addEventListener("click", anterior);
-  $("btn-repetir").addEventListener("click", function () {
-    respuestas = new Array(PREGUNTAS.length).fill(null);
-    actual = 0;
-    borrar();
-    mostrar("portada");
-  });
 
   var enlace = $("cta-enlace");
   if (CTA_URL) {

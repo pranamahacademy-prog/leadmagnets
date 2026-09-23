@@ -147,8 +147,8 @@ Por qué así:
 
 ### La nota sobre 10
 
-Encima del nivel, un aro muestra una nota de 0 a 10 con la etiqueta «Tu nivel»,
-igual que el medidor del test de sueño. 10 sería una respiración sin ninguna
+Junto al nivel (a su izquierda, también en móvil), un aro muestra la nota de 0
+a 10 en grande, igual que el medidor del test de sueño. 10 sería una respiración sin ninguna
 señal. Cada nivel tiene su franja, y dentro de ella la nota baja cuantos más
 puntos hay:
 

@@ -375,8 +375,9 @@ h1 em, h2 em{ font-style:italic; }
   display:flex; flex-direction:column; align-items:center; justify-content:center;
   line-height:1;
 }
-.nota__num{ position:relative; font-family:var(--serif); font-size:calc(var(--d) * .56); letter-spacing:-.02em; }
-.nota__num small{ position:absolute; left:100%; bottom:.3em; margin-left:.04em; font-size:.3em; letter-spacing:0; }
+.nota__num{ display:inline-flex; align-items:baseline; font-family:var(--serif); font-size:calc(var(--d) * .5); letter-spacing:-.02em; line-height:1;
+  transform:translateY(-.14em); /* las cifras de Playfair bajan de la línea: centro óptico */ }
+.nota__num small{ margin-left:.04em; font-size:.34em; letter-spacing:0; }
 .nota__etiqueta{
   margin-top:2px;
   font-size:calc(var(--d) * .08); font-weight:700; letter-spacing:.14em; text-transform:uppercase; white-space:nowrap;

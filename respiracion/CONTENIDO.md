@@ -301,9 +301,11 @@ Es un bloque en azul noche, la única pieza en negativo de todo el test.
 >
 > *(cierre según el nivel)*
 >
-> **[ QUIERO APRENDER A RESPIRAR MEJOR ]**
+> **En mi grupo gratuito de WhatsApp comparto cada semana píldoras de valor 🫰🏻**
 >
-> Te lleva a mi comunidad gratuita de WhatsApp
+> **[ ACCEDER AL GRUPO GRATUITO ]**
+>
+> Puedes salir cuando quieras, sin compromiso
 >
 > *Carmen · Método Pranamah*
 
@@ -330,8 +332,12 @@ Cierre según el nivel:
 En el nivel 1 no se habla de «reeducar estos patrones»: sería contradecir el
 resultado que la persona acaba de leer.
 
-**Destino del botón:** la comunidad gratuita de WhatsApp de Carmen
-(`https://chat.whatsapp.com/JKsZH0UaarzAOmlf0Za2Uv`), en la constante `CTA_URL`
+En móvil el orden cambia para que el botón se vea sin desplazarse: titular,
+línea del grupo, botón y nota, y debajo, centrados, la frase y el cierre según
+el nivel y la firma.
+
+**Destino del botón:** el grupo gratuito de WhatsApp de Carmen
+(`https://chat.whatsapp.com/J76Fz96EtWj9IzNMKX3k4o`), en la constante `CTA_URL`
 al principio del `<script>` de `index.html`. Se abre en la misma pestaña para
 que, desde el navegador de Instagram, el móvil pase el enlace a WhatsApp.
 

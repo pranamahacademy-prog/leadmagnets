@@ -353,10 +353,11 @@ h1 em, h2 em{ font-style:italic; }
 @media (max-width:899px){
   .cta .kicker{ order:1; }
   .cta h2{ order:2; }
-  .cta .btn{ order:3; }
-  .cta__nota{ order:4; }
-  .cta__texto{ order:5; }
-  .cta__firma{ order:6; }
+  .cta__grupo{ order:3; }
+  .cta .btn{ order:4; }
+  .cta__nota{ order:5; }
+  .cta__texto{ order:6; text-align:center; }
+  .cta__firma{ order:7; }
 }
 /* Aro con la nota sobre 10 (como en el test de sueño, con los colores de la marca) */
 .nota{
@@ -477,6 +478,16 @@ h1 em, h2 em{ font-style:italic; }
   text-wrap:pretty;
 }
 .cta .btn{ margin-top:clamp(22px, 3.6svh, 32px); width:100%; padding:12px 20px; line-height:1.3; text-wrap:balance; }
+.cta__grupo{
+  margin:clamp(16px, 2.6svh, 22px) 0 0;
+  font-size:.98rem;
+  font-weight:700;
+  line-height:1.5;
+  text-align:center;
+  color:var(--blanco);
+  text-wrap:balance;
+}
+.cta__grupo + .btn{ margin-top:12px; }
 .cta__nota{
   margin:10px 0 0;
   font-size:.8rem;
@@ -702,8 +713,9 @@ h1 em, h2 em{ font-style:italic; }
         <h2 id="cta-titulo">Respiras unas 20.000 veces al día y, probablemente, nadie te ha enseñado a <em>observar</em> cómo lo haces.</h2>
         <p class="cta__texto" id="cta-nivel"></p>
         <p class="cta__texto" id="cta-cierre"></p>
-        <a class="btn" id="cta-enlace" href="#">Quiero aprender a respirar mejor</a>
-        <p class="cta__nota">Te lleva a mi comunidad gratuita de WhatsApp</p>
+        <p class="cta__grupo">En mi grupo gratuito de WhatsApp comparto cada semana píldoras de valor 🫰🏻</p>
+        <a class="btn" id="cta-enlace" href="#">Acceder al grupo gratuito</a>
+        <p class="cta__nota">Puedes salir cuando quieras, sin compromiso</p>
         <p class="cta__firma">Carmen · Método Pranamah</p>
       </aside>
 
@@ -740,7 +752,7 @@ h1 em, h2 em{ font-style:italic; }
 
   // URL del botón final: la comunidad de WhatsApp de Carmen.
   // Si se deja vacía, el botón se ve pero no lleva a ningún sitio.
-  var CTA_URL = "https://chat.whatsapp.com/JKsZH0UaarzAOmlf0Za2Uv";
+  var CTA_URL = "https://chat.whatsapp.com/J76Fz96EtWj9IzNMKX3k4o";
 
   var STORAGE = "pranamah.test.como-respiras.v1";
 

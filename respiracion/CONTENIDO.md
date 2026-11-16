@@ -63,7 +63,18 @@ responder «Nunca». Eso resta puntos, no los suma: el error va hacia el lado
 prudente.
 
 El área de cada pregunta no se enseña durante el test. Encima de cada pregunta
-aparece un antetítulo breve que sitúa la escena.
+aparece un antetítulo breve que sitúa la escena y, encima, un emoji en un círculo
+arena suave para que el recorrido sea más ameno:
+
+| # | Icono | # | Icono | # | Icono |
+|---|---|---|---|---|---|
+| 1 · La nariz | 👃 | 5 · Suspiros | 😮‍💨 | 9 · En movimiento | 🚶 |
+| 2 · Sin darte cuenta | 👄 | 6 · Para calmarte | 🎈 | 10 · Pequeños esfuerzos | 🪜 |
+| 3 · Al despertar | 🌅 | 7 · Dónde se mueve | 👀 | 11 · Esa sensación | 🫁 |
+| 4 · En reposo | 👂 | 8 · Cuello y hombros | 🤷 | 12 · Bajo presión | ⏰ |
+
+Son emojis del sistema, así que en cada móvil se ven con el estilo de su teclado
+(los mismos que en WhatsApp).
 
 | # | Antetítulo | Pregunta | Pista (una línea, opcional) | Área |
 |---|---|---|---|---|
@@ -196,7 +207,9 @@ Reglas:
 
 El resultado incluye además **«Tu mapa respiratorio»**: cinco barras finas, sin
 números. La barra del área predominante va en azul noche y las demás en arena.
-Hace que el resultado se perciba como propio sin parecer un informe clínico.
+Cada área lleva delante su emoji (👃 Nariz y boca · 🎈 Volumen de aire · 🤷 Pecho y
+hombros · 🚶 En movimiento · 🫁 Aire y tensión). Hace que el resultado se perciba
+como propio sin parecer un informe clínico.
 
 ## 10. Texto completo de los 3 resultados
 
@@ -361,13 +374,15 @@ un profesional sanitario». Es la única indicación sanitaria del test.
 | Pantalla | Contenido |
 |---|---|
 | **1 · Portada** | Círculo que respira, antetítulo, titular, regla arena, entradilla, subtítulo, botón «Empezar test», «12 preguntas · Resultado al momento». |
-| **2 a 13 · Preguntas** | Una por pantalla. El bloque de la pregunta reserva la altura de la más larga, así que el antetítulo y las respuestas están siempre en el mismo sitio y no parece que se cambie de pantalla. Arriba, una línea fina de progreso y «3 de 12». Debajo, el antetítulo, la pregunta en Playfair, una pista opcional de una línea y 4 botones grandes a todo el ancho de la columna. Al tocar una respuesta, avanza sola en 0,3 s. «← Anterior» discreto debajo. |
+| **2 a 13 · Preguntas** | Una por pantalla, con su emoji arriba. El bloque de la pregunta reserva la altura de la más larga, así que el antetítulo y las respuestas están siempre en el mismo sitio y no parece que se cambie de pantalla. Arriba, una línea fina de progreso y «3 de 12». Debajo, el antetítulo, la pregunta en Playfair, una pista opcional de una línea y 4 botones grandes a todo el ancho de la columna, rellenos de arena suave para que contrasten con el fondo crudo; la elegida pasa a azul noche con el texto claro. Al tocar una respuesta, avanza sola en 0,3 s. «← Anterior» discreto debajo. |
 | **14 · Cálculo** | Círculo que respira, «Leyendo tus respuestas…» y debajo «Comprobando qué señales se repiten en tu caso.», 1,6 s. |
 | **15 · Resultado** | Primero el nivel: aro con la nota (la cifra centrada en el aro), insignia y titular. Justo después, el bloque azul noche de «El siguiente paso»; en móvil el botón de la comunidad va nada más acabar el titular del CTA, así que se ve sin desplazarse, y los textos del CTA van debajo del botón. Después, el detalle: textos del nivel, área predominante y mapa respiratorio. En escritorio, nivel y detalle forman una sola tarjeta a la izquierda y el CTA va a la derecha. |
 
-Diseño según el manual de marca: fondo blanco roto, tarjetas y opciones en
-crema, todo el texto en azul noche, arena solo como superficie (botones, regla,
-barras, opción elegida), gris solo en líneas finas y sin rosa. Una palabra en
+Diseño según el manual de marca: fondo blanco roto, tarjetas en crema, todo el
+texto en azul noche (claro sobre azul noche), arena solo como superficie
+(botones, regla, barras, respuestas), gris solo en líneas finas y sin rosa.
+Excepción consciente, a petición de Carmen: los emojis de colores de las
+preguntas y del mapa, donde el manual pide iconos de trazo fino y un solo color. Una palabra en
 cursiva por titular. Playfair Display para titulares y Lato para el resto,
 incrustadas en el archivo.
 

@@ -53,6 +53,9 @@
   /* Derivados */
   --linea:      rgba(189, 195, 199, .75);
   --pista:      rgba(189, 195, 199, .45);
+  --arena-60:   #e4d6ca;   /* arena al 60 %: fondo de las respuestas */
+  --arena-30:   #efe6de;   /* arena al 30 %: fondo del icono          */
+  --emoji: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
 
   --serif: "Playfair Display", Georgia, "Times New Roman", serif;
   --sans:  "Lato", -apple-system, "Helvetica Neue", Arial, sans-serif;
@@ -242,6 +245,19 @@ h1 em, h2 em{ font-style:italic; }
 }
 
 .q{ text-align:center; }
+/* Emoji de cada pregunta, como los de WhatsApp, en un círculo arena suave */
+.q__icono{
+  width:clamp(52px, 8svh, 64px);
+  aspect-ratio:1;
+  margin:0 auto clamp(10px, 1.8svh, 16px);
+  border-radius:50%;
+  background:var(--arena-30);
+  display:grid;
+  place-items:center;
+  font-family:var(--emoji);
+  font-size:clamp(1.6rem, 4svh, 2rem);
+  line-height:1;
+}
 .q .kicker{ margin-bottom:14px; }
 .q__titulo{
   font-size:clamp(1.55rem, 4.6vw, 2.15rem);
@@ -271,9 +287,9 @@ h1 em, h2 em{ font-style:italic; }
   width:100%;
   min-height:60px;
   padding:0 22px;
-  background:var(--crema);
-  border:1px solid var(--linea);
-  border-radius:6px;
+  background:var(--arena-60);
+  border:0;
+  border-radius:8px;
   font-family:var(--sans);
   font-size:1.05rem;
   font-weight:400;
@@ -284,11 +300,12 @@ h1 em, h2 em{ font-style:italic; }
 }
 /* Solo con ratón: en pantallas táctiles el hover se queda pegado y la opción
    de la pregunta siguiente parecería ya elegida. */
-@media (hover:hover){ .opcion:hover{ border-color:var(--arena); background:#f3ebe2; } }
+@media (hover:hover){ .opcion:hover{ background:var(--arena); } }
 .opcion__marca{
   flex:none;
   width:20px; height:20px;
-  border:1.5px solid var(--arena);
+  background:var(--blanco);
+  border:1.5px solid rgba(44, 62, 80, .3);
   border-radius:50%;
   display:grid;
   place-items:center;
@@ -301,12 +318,14 @@ h1 em, h2 em{ font-style:italic; }
   transform:scale(0);
   transition:transform .18s ease;
 }
+/* Elegida: en negativo, azul noche con texto claro */
 .opcion[aria-checked="true"]{
-  background:var(--arena);
-  border-color:var(--arena);
+  background:var(--azul);
+  color:var(--blanco);
   font-weight:700;
 }
-.opcion[aria-checked="true"] .opcion__marca{ border-color:var(--azul); }
+.opcion[aria-checked="true"] .opcion__marca{ border-color:var(--arena); background:var(--azul); }
+.opcion[aria-checked="true"] .opcion__marca::after{ background:var(--arena); }
 .opcion[aria-checked="true"] .opcion__marca::after{ transform:scale(1); }
 
 .volver{
@@ -450,6 +469,7 @@ h1 em, h2 em{ font-style:italic; }
   transition:width .9s cubic-bezier(.22,.75,.3,1);
 }
 .mapa li.es-principal{ font-weight:700; }
+.mapa__icono{ font-family:var(--emoji); margin-right:.45em; font-weight:400; }
 .mapa li.es-principal .mapa__barra{ background:var(--azul); }
 
 /* CTA en negativo: la única pieza con fondo azul noche */
@@ -662,6 +682,7 @@ h1 em, h2 em{ font-style:italic; }
       </div>
 
       <div class="q">
+        <div class="q__icono" id="q-icono" aria-hidden="true"></div>
         <p class="kicker" id="q-kicker">…</p>
         <h2 class="q__titulo" id="q-titulo">…</h2>
         <p class="q__pista" id="q-pista"></p>
@@ -761,26 +782,31 @@ h1 em, h2 em{ font-style:italic; }
      sirven para personalizar el resultado.                          */
   var AREAS = {
     nariz: {
+      icono: "👃",
       etiqueta: "Nariz y boca",
       titulo: "La nariz se queda a un lado",
       texto: "En tu caso, las señales aparecen especialmente en la respiración nasal: la nariz se carga con facilidad o la boca toma el relevo, muchas veces sin que te des cuenta. La nariz no es solo una entrada de aire: lo filtra, lo calienta, lo humedece y marca un ritmo más pausado. Recuperarla suele ser el primer paso."
     },
     volumen: {
+      icono: "🎈",
       etiqueta: "Volumen de aire",
       titulo: "Una tendencia a respirar de más",
       texto: "En tu caso destaca la tendencia a respirar más fuerte o más grande de lo necesario, que puede notarse en suspiros, bocanadas, una respiración que se oye o la costumbre de coger mucho aire para calmarte. Es muy común pensar que coger más aire es respirar mejor, pero en reposo una respiración eficiente es tranquila y casi imperceptible. Paradójicamente, respirar de más puede alimentar la sensación de que el aire no llega."
     },
     mecanica: {
+      icono: "🤷",
       etiqueta: "Pecho y hombros",
       titulo: "Una respiración alta y tensa",
       texto: "En tu caso destaca un patrón respiratorio alto: el movimiento tiende a concentrarse en la parte alta del pecho, o el cuello y los hombros participan más de la cuenta. En reposo, el trabajo debería hacerlo sobre todo el diafragma, con un movimiento suave en la zona de la tripa y las costillas de abajo. Cuando cuello y hombros toman el relevo, respirar cuesta más y esa zona acumula tensión."
     },
     movimiento: {
+      icono: "🚶",
       etiqueta: "En movimiento",
       titulo: "Poco margen cuando te mueves",
       texto: "En tu caso aparece sobre todo dificultad para mantener una respiración tranquila durante el movimiento: la boca se abre pronto o el aliento se acaba antes de lo que esperarías. Influye la forma física, claro, pero también algo que casi nadie entrena: cómo tolera tu cuerpo esa sensación de «necesito más aire». Si la falta de aire es nueva o va a más, consúltalo con un profesional sanitario."
     },
     regulacion: {
+      icono: "🫁",
       etiqueta: "Aire y tensión",
       titulo: "Una respiración que se desajusta con facilidad",
       texto: "En tu caso, las señales aparecen sobre todo como una sensación de aire que no termina de llenarte o como una respiración que se acelera cuando el día aprieta. Es habitual responder a esa sensación cogiendo más aire, y eso no siempre la calma. La respiración es una de las pocas funciones automáticas que también puedes dirigir, y eso se entrena."
@@ -815,40 +841,40 @@ h1 em, h2 em{ font-style:italic; }
   ];
 
   var PREGUNTAS = [
-    { area: "nariz",      kicker: "La nariz",
+    { area: "nariz",      kicker: "La nariz", icono: "👃",
       titulo: "¿Notas la nariz tapada o cargada sin tener un resfriado?",
       pista: "Responde pensando en tu día a día, sin corregir nada." },
-    { area: "nariz",      kicker: "Sin darte cuenta",
+    { area: "nariz",      kicker: "Sin darte cuenta", icono: "👄",
       titulo: "Mientras trabajas, lees o ves una serie, ¿te descubres respirando por la boca?",
       pista: "" },
-    { area: "nariz",      kicker: "Al despertar",
+    { area: "nariz",      kicker: "Al despertar", icono: "🌅",
       titulo: "¿Te despiertas con la boca seca?",
       pista: "" },
-    { area: "volumen",    kicker: "En reposo",
+    { area: "volumen",    kicker: "En reposo", icono: "👂",
       titulo: "Estando en calma, ¿se oye tu respiración?",
       pista: "Por ejemplo, frente al ordenador o leyendo." },
-    { area: "volumen",    kicker: "Suspiros",
+    { area: "volumen",    kicker: "Suspiros", icono: "😮‍💨",
       titulo: "A lo largo del día, ¿se te escapan suspiros o grandes bocanadas de aire?",
       pista: "Como si una respiración normal no bastara." },
-    { area: "volumen",    kicker: "Para calmarte",
+    { area: "volumen",    kicker: "Para calmarte", icono: "🎈",
       titulo: "Cuando quieres calmarte, ¿coges todo el aire que puedes?",
       pista: "Una inspiración bien grande, de las de «respira hondo»." },
-    { area: "mecanica",   kicker: "Dónde se mueve",
+    { area: "mecanica",   kicker: "Dónde se mueve", icono: "👀",
       titulo: "Cuando respiras sin pensar, ¿se mueve sobre todo la parte alta del pecho?",
       pista: "Más que la tripa y las costillas de abajo. Si dudas, obsérvalo ahora." },
-    { area: "mecanica",   kicker: "Cuello y hombros",
+    { area: "mecanica",   kicker: "Cuello y hombros", icono: "🤷",
       titulo: "Al coger aire, ¿se te suben los hombros o se tensa el cuello?",
       pista: "En una respiración normal, sin hacerla más grande." },
-    { area: "movimiento", kicker: "En movimiento",
+    { area: "movimiento", kicker: "En movimiento", icono: "🚶",
       titulo: "Al caminar deprisa o subir una cuesta, ¿acabas abriendo la boca para respirar?",
       pista: "" },
-    { area: "movimiento", kicker: "Pequeños esfuerzos",
+    { area: "movimiento", kicker: "Pequeños esfuerzos", icono: "🪜",
       titulo: "¿Te quedas sin aliento con esfuerzos pequeños, como subir dos pisos por la escalera?",
       pista: "" },
-    { area: "regulacion", kicker: "Esa sensación",
+    { area: "regulacion", kicker: "Esa sensación", icono: "🫁",
       titulo: "¿Te pasa que coges aire hondo y aun así no terminas de llenar los pulmones?",
       pista: "" },
-    { area: "regulacion", kicker: "Bajo presión",
+    { area: "regulacion", kicker: "Bajo presión", icono: "⏰",
       titulo: "Con el estrés del día a día, ¿notas que respiras más rápido o más fuerte?",
       pista: "Una prisa, un imprevisto, una conversación tensa." }
   ];
@@ -1043,6 +1069,7 @@ h1 em, h2 em{ font-style:italic; }
 
   function pintarPregunta() {
     var q = PREGUNTAS[actual];
+    $("q-icono").textContent  = q.icono;
     $("q-kicker").textContent = q.kicker;
     $("q-titulo").textContent = q.titulo;
     $("q-pista").textContent  = q.pista;
@@ -1158,7 +1185,9 @@ h1 em, h2 em{ font-style:italic; }
       var li = document.createElement("li");
       if (k === r.principal) li.className = "es-principal";
       li.innerHTML = '<span></span><span class="mapa__pista"><span class="mapa__barra"></span></span>';
-      li.firstChild.textContent = AREAS[k].etiqueta;
+      li.firstChild.innerHTML = '<span class="mapa__icono" aria-hidden="true"></span>';
+      li.firstChild.firstChild.textContent = AREAS[k].icono;
+      li.firstChild.appendChild(document.createTextNode(AREAS[k].etiqueta));
       li.setAttribute("aria-label", AREAS[k].etiqueta + ": " + pct + " % de señales");
       li.querySelector(".mapa__barra").dataset.pct = String(pct);
       ul.appendChild(li);

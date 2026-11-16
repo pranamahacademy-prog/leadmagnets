@@ -206,6 +206,21 @@ h1 em, h2 em{ font-style:italic; }
   letter-spacing:.06em;
   color:var(--azul);
 }
+/* Solo con un test a medias: volver a empezar sin pasar por lo guardado */
+.intro__reiniciar{
+  margin:4px auto 0;
+  padding:6px 10px;
+  background:none;
+  border:0;
+  font-family:var(--sans);
+  font-size:.82rem;
+  letter-spacing:.04em;
+  color:var(--azul);
+  text-decoration:underline;
+  text-underline-offset:4px;
+  cursor:pointer;
+}
+.intro__reiniciar[hidden]{ display:none; }
 
 /* ---------- Preguntas ---------- */
 .quiz{ align-items:center; }
@@ -665,7 +680,8 @@ h1 em, h2 em{ font-style:italic; }
       <p class="intro__lead">Respiras miles de veces cada día. Pero… ¿alguna vez te has parado a observar cómo lo haces?</p>
       <p class="intro__sub">Descubre en menos de 2 minutos en qué punto está tu respiración y qué hábitos pueden estar influyendo en ella.</p>
       <button class="btn" type="button" id="btn-empezar">Empezar test</button>
-      <p class="intro__meta">12 preguntas · Resultado al momento</p>
+      <p class="intro__meta" id="intro-meta">12 preguntas · Resultado al momento</p>
+      <button class="intro__reiniciar" type="button" id="btn-reiniciar" hidden>Empezar desde el principio</button>
     </div>
   </section>
 
@@ -1218,6 +1234,13 @@ h1 em, h2 em{ font-style:italic; }
     mostrar("test");
     pintarPregunta();
   });
+  $("btn-reiniciar").addEventListener("click", function () {
+    respuestas = new Array(PREGUNTAS.length).fill(null);
+    actual = 0;
+    borrar();
+    mostrar("test");
+    pintarPregunta();
+  });
   $("btn-volver").addEventListener("click", anterior);
 
   var enlace = $("cta-enlace");
@@ -1256,10 +1279,13 @@ h1 em, h2 em{ font-style:italic; }
   window.PranamahTest = { evaluar: evaluar, preguntas: PREGUNTAS, niveles: NIVELES, areas: AREAS };
 
   /* ══════════════════════════ ARRANQUE ══════════════════════════ */
+  // La portada sale siempre. Si hay un test a medias, el botón lo retoma
+  // y aparece la opción de empezar desde el principio.
   cargar();
   if (respuestas.some(function (r) { return r !== null; })) {
-    mostrar("test");
-    pintarPregunta();
+    $("btn-empezar").textContent = "Continuar el test";
+    $("intro-meta").textContent = "Ibas por la pregunta " + (actual + 1) + " de " + PREGUNTAS.length;
+    $("btn-reiniciar").hidden = false;
   }
 })();
 </script>

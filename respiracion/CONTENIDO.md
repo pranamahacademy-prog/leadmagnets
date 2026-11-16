@@ -373,7 +373,7 @@ un profesional sanitario». Es la única indicación sanitaria del test.
 
 | Pantalla | Contenido |
 |---|---|
-| **1 · Portada** | Círculo que respira, antetítulo, titular, regla arena, entradilla, subtítulo, botón «Empezar test», «12 preguntas · Resultado al momento». |
+| **1 · Portada** | Círculo que respira, antetítulo, titular, regla arena, entradilla, subtítulo, botón «Empezar test», «12 preguntas · Resultado al momento». Con un test a medias: «Continuar el test», «Ibas por la pregunta N de 12» y el enlace «Empezar desde el principio». |
 | **2 a 13 · Preguntas** | Una por pantalla, con su emoji arriba. El bloque de la pregunta reserva la altura de la más larga, así que el antetítulo y las respuestas están siempre en el mismo sitio y no parece que se cambie de pantalla. Arriba, una línea fina de progreso y «3 de 12». Debajo, el antetítulo, la pregunta en Playfair, una pista opcional de una línea y 4 botones grandes a todo el ancho de la columna, rellenos de arena suave para que contrasten con el fondo crudo; la elegida pasa a azul noche con el texto claro. Al tocar una respuesta, avanza sola en 0,3 s. «← Anterior» discreto debajo. |
 | **14 · Cálculo** | Círculo que respira, «Leyendo tus respuestas…» y debajo «Comprobando qué señales se repiten en tu caso.», 1,6 s. |
 | **15 · Resultado** | Primero el nivel: aro con la nota (la cifra centrada en el aro), insignia y titular. Justo después, el bloque azul noche de «El siguiente paso»; en móvil el botón de la comunidad va nada más acabar el titular del CTA, así que se ve sin desplazarse, y los textos del CTA van debajo del botón. Después, el detalle: textos del nivel, área predominante y mapa respiratorio. En escritorio, nivel y detalle forman una sola tarjeta a la izquierda y el CTA va a la derecha. |
@@ -394,9 +394,13 @@ pasa del ancho de lectura.
 
 ## 15. Resto de la lógica
 
-- **Guardado:** las respuestas se guardan en el navegador. Si alguien cierra a
-  mitad, al volver retoma donde lo dejó. Se borran al ver el resultado. La clave de guardado es distinta de la del test de
-  sueño, así que los dos tests no se pisan aunque estén en el mismo dominio.
+- **Guardado:** las respuestas se guardan en el navegador y se borran al ver el
+  resultado. Al abrir el enlace sale siempre la portada. Si alguien dejó el test
+  a medias, el botón pasa a «Continuar el test» (retoma donde lo dejó), la línea
+  de debajo dice «Ibas por la pregunta N de 12» y aparece el enlace «Empezar
+  desde el principio», que borra lo guardado. La clave de guardado es distinta
+  de la del test de sueño, así que los dos tests no se pisan aunque estén en el
+  mismo dominio.
 - **Avance automático:** al responder, la pregunta siguiente aparece a los
   0,3 s, y durante sus primeros 0,25 s ignora toques. Así un doble toque no
   responde una pregunta que no se ha llegado a ver. Si hubo que desplazarse para
